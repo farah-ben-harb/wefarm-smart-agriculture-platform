@@ -1,7 +1,7 @@
 # WeFarm – Smart Agriculture Management Platform
 
 ## Project Overview
-WeFarm is a web and mobile application designed to simplify and transform agricultural activity management through digitalization and intelligent technologies.
+WeFarm is a web application designed to simplify and transform agricultural activity management through digitalization and intelligent technologies.
 
 The platform connects different actors in the agricultural ecosystem, enhances collaboration, and promotes sustainable practices using Artificial Intelligence and modern web technologies.
 
@@ -19,8 +19,7 @@ The platform connects different actors in the agricultural ecosystem, enhances c
 
 The project is based on a multi-technology architecture:
 
-- Symfony (PHP) → Backend web application
-- Java → Additional backend services / modules
+- Java →  backend services / modules
 - Mobile Application → User interaction (if applicable)
 - AI Models → Prediction and intelligent features
 - External APIs → Payment, notifications, integrations
@@ -96,7 +95,6 @@ The system integrates AI in multiple modules:
 
 ## Project Structure
 
-backend-symfony/    → Symfony application  
 backend-java/       → Java services  
 mobile/             → Mobile application  
 ai/                 → Machine learning models  
