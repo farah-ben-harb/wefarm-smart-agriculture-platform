@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<AnchorPane xmlns:fx="http://javafx.com/fxml"
+            fx:controller="controllers.Event.ModifierEvenementController"
+            prefWidth="1000" prefHeight="600"
+            stylesheets="@/css/StyleEvents.css">
+
+    <!-- Navbar intégrée -->
+    <fx:include fx:id="navbar" source="../navbarFront.fxml"
+                AnchorPane.topAnchor="0" AnchorPane.leftAnchor="0" AnchorPane.rightAnchor="0"/>
+
+    <!-- Contenu principal -->
+    <VBox spacing="30" AnchorPane.topAnchor="90" AnchorPane.leftAnchor="60" AnchorPane.rightAnchor="60">
+        <!-- Titre -->
+        <Label text="📝 Modifier l'Événement"
+               style="-fx-font-size: 24px; -fx-font-weight: bold; -fx-text-fill: #333;"
+               alignment="CENTER_LEFT" />
+
+        <!-- Formulaire aligné en grille -->
+        <GridPane hgap="20" vgap="15">
+            <columnConstraints>
+                <ColumnConstraints halignment="RIGHT" minWidth="180"/>
+                <ColumnConstraints prefWidth="320"/>
+                <ColumnConstraints minWidth="200"/>
+            </columnConstraints>
+
+            <!-- Ligne 1 : Titre -->
+            <Label text="Titre :" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+            <TextField fx:id="titreField" prefHeight="30" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+            <Label fx:id="titreError" textFill="red" GridPane.rowIndex="0" GridPane.columnIndex="2"/>
+
+            <!-- Ligne 2 : Description -->
+            <Label text="Description :" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+            <TextArea fx:id="descriptionField" prefHeight="70" prefRowCount="3" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+            <Label fx:id="descriptionError" textFill="red" GridPane.rowIndex="1" GridPane.columnIndex="2"/>
+
+            <!-- Ligne 3 : Date début -->
+            <Label text="Date début :" GridPane.rowIndex="2" GridPane.columnIndex="0"/>
+            <DatePicker fx:id="dateDebutPicker" prefHeight="30" GridPane.rowIndex="2" GridPane.columnIndex="1"/>
+            <Label fx:id="dateDebutError" textFill="red" GridPane.rowIndex="2" GridPane.columnIndex="2"/>
+
+            <!-- Ligne 4 : Type de visite -->
+            <Label text="Type de visite :" GridPane.rowIndex="3" GridPane.columnIndex="0"/>
+            <ComboBox fx:id="typeVisiteComboBox" prefHeight="30" GridPane.rowIndex="3" GridPane.columnIndex="1"/>
+            <Label fx:id="typeVisiteError" textFill="red" GridPane.rowIndex="3" GridPane.columnIndex="2"/>
+
+            <!-- Ligne 5 : Localisation -->
+            <Label text="Localisation :" GridPane.rowIndex="4" GridPane.columnIndex="0"/>
+            <TextField fx:id="localisationField" prefHeight="30" GridPane.rowIndex="4" GridPane.columnIndex="1"/>
+            <Label fx:id="localisationError" textFill="red" GridPane.rowIndex="4" GridPane.columnIndex="2"/>
+
+            <!-- Ligne 6 : Prix -->
+            <Label text="Prix (DT) :" GridPane.rowIndex="5" GridPane.columnIndex="0"/>
+            <TextField fx:id="prixField" prefHeight="30" GridPane.rowIndex="5" GridPane.columnIndex="1"/>
+            <Label fx:id="prixError" textFill="red" GridPane.rowIndex="5" GridPane.columnIndex="2"/>
+        </GridPane>
+
+        <!-- Boutons d'action -->
+        <HBox spacing="15" alignment="CENTER_RIGHT">
+            <Region HBox.hgrow="ALWAYS"/>
+            <Button text="Annuler" onAction="#annulerModifications" />
+            <Button text="Enregistrer"
+                    style="-fx-background-color: #28a745; -fx-text-fill: white; -fx-padding: 8 20; -fx-font-weight: bold;"
+                    onAction="#enregistrerModifications"/>
+        </HBox>
+    </VBox>
+</AnchorPane>

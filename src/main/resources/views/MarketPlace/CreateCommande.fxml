@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Font?>
+
+<VBox spacing="20" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.marketplace.CreateCommandeController">
+    <padding>
+        <Insets top="20" right="20" bottom="20" left="20"/>
+    </padding>
+
+    <Label text="Créer une Commande" style="-fx-font-size: 24;">
+        <VBox.margin>
+            <Insets bottom="20"/>
+        </VBox.margin>
+    </Label>
+
+    <!-- Product Info -->
+    <GridPane hgap="10" vgap="10">
+        <Label text="Produit:" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
+        <Label fx:id="productNameLabel" GridPane.columnIndex="1" GridPane.rowIndex="0"/>
+        
+        <Label text="Prix:" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+        <Label fx:id="productPriceLabel" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+        
+        <Label text="Quantité:" GridPane.columnIndex="0" GridPane.rowIndex="2"/>
+        <Spinner fx:id="quantitySpinner" min="1" GridPane.columnIndex="1" GridPane.rowIndex="2"/>
+        
+        <Label text="Mode de Paiement:" GridPane.columnIndex="0" GridPane.rowIndex="3"/>
+        <ComboBox fx:id="paymentModeCombo" promptText="Choisir le mode de paiement" GridPane.columnIndex="1" GridPane.rowIndex="3"/>
+        
+        <Label text="Adresse de Livraison:" GridPane.columnIndex="0" GridPane.rowIndex="4"/>
+        <TextArea fx:id="deliveryAddressArea" prefRowCount="3" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="4"/>
+    </GridPane>
+
+    <!-- Total Price -->
+    <HBox spacing="10" alignment="CENTER_RIGHT">
+        <Label text="Total:"/>
+        <Label fx:id="totalPriceLabel" style="-fx-font-weight: bold;"/>
+    </HBox>
+
+    <!-- Buttons -->
+    <HBox spacing="10" alignment="CENTER">
+        <Button text="Confirmer" onAction="#handleConfirm" styleClass="confirm-button"/>
+        <Button text="Annuler" onAction="#handleCancel" styleClass="cancel-button"/>
+    </HBox>
+
+    <stylesheets>
+        <String fx:value="/css/marketplace.css"/>
+    </stylesheets>
+</VBox> 

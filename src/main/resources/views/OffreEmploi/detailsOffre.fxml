@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.image.Image?>
+
+<AnchorPane xmlns="http://javafx.com/javafx/17"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="controllers.OffreEmploi.DetailsOffreEmploiController"
+            stylesheets="@../../css/stylesOffresEmploi.css"
+            styleClass="details-pane"
+            prefHeight="600.0" prefWidth="800.0">
+
+    <!-- Navbar avec ombre portée -->
+    <fx:include fx:id="navbar" source="../navbarFront.fxml"
+                AnchorPane.topAnchor="0"
+                AnchorPane.leftAnchor="0"
+                AnchorPane.rightAnchor="0"/>
+
+    <!-- Conteneur principal -->
+    <VBox spacing="20" style="-fx-background-color: #f8f9fa; -fx-padding: 20;"
+          AnchorPane.topAnchor="70"
+          AnchorPane.rightAnchor="20"
+          AnchorPane.bottomAnchor="20"
+          AnchorPane.leftAnchor="20">
+
+        <!-- Carte d'en-tête -->
+        <StackPane style="-fx-background-radius: 10; -fx-background-color: white; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 10, 0, 0, 2); -fx-padding: 20;">
+            <HBox alignment="CENTER_LEFT" spacing="15">
+                <!-- Icône carte blanche avec ombre -->
+                <StackPane style="-fx-background-color: white; -fx-text-fill: #038156; -fx-background-radius: 50%; -fx-min-width: 50; -fx-min-height: 50; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 5, 0, 0, 2);"
+                           alignment="CENTER">
+                    <ImageView fitWidth="24" fitHeight="24" preserveRatio="true">
+                        <Image url="@../../icons/emploi.png"/>
+                    </ImageView>
+                </StackPane>
+
+                <VBox spacing="8">
+                    <HBox alignment="CENTER_LEFT" spacing="10">
+                        <Label fx:id="titreLabel" styleClass="details-title" style="-fx-text-fill: #038156; -fx-font-weight: bold; -fx-font-size: 18;"/>
+                    </HBox>
+                    <HBox spacing="15" alignment="CENTER_LEFT">
+                        <Label fx:id="datePublicationLabel" styleClass="details-date" style="-fx-text-fill: #6c757d;"/>
+                        <Label text="•" style="-fx-text-fill: #dee2e6;"/>
+                        <Label fx:id="localisationLabel" style="-fx-text-fill: #6c757d; -fx-graphic-text-gap: 5;">
+                            <graphic>
+                                <ImageView fitWidth="12" fitHeight="12" preserveRatio="true">
+                                    <Image url="@../../icons/localisation.png"/>
+                                </ImageView>
+                            </graphic>
+                        </Label>
+                    </HBox>
+                </VBox>
+
+                <Region HBox.hgrow="ALWAYS"/>
+
+                <!-- Salaire -->
+                <VBox alignment="CENTER_RIGHT" spacing="5">
+                    <Label fx:id="salaireProposeLabel" style="-fx-text-fill: #858796; -fx-font-size: 12;"/>
+                    <Label fx:id="salaireLabel" style="-fx-text-fill: #038156; -fx-font-weight: bold; -fx-font-size: 18;"/>
+                </VBox>
+            </HBox>
+        </StackPane>
+
+        <!-- Conteneur unique des détails -->
+        <VBox spacing="15" style="-fx-padding: 20; -fx-background-color: white; -fx-background-radius: 10; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.05), 5, 0, 0, 2);">
+            <!-- Section Description -->
+            <VBox spacing="10">
+                <HBox spacing="10" alignment="CENTER_LEFT">
+                    <ImageView fitWidth="16" fitHeight="16" preserveRatio="true">
+                        <Image url="@../../icons/description.png"/>
+                    </ImageView>
+                    <Label fx:id="descriptionPosteLabel" style="-fx-text-fill: #038156; -fx-font-weight: bold;"/>
+                </HBox>
+                <TextArea fx:id="descriptionArea" editable="false" wrapText="true"
+                          style="-fx-background-color: transparent; -fx-border-color: #e3e6f0; -fx-border-radius: 5; -fx-padding: 10; -fx-font-size: 14; -fx-text-fill: #5a5c69;"/>
+            </VBox>
+
+            <!-- Séparateur -->
+            <Separator style="-fx-padding: 10 0;"/>
+
+            <!-- Section Compétences -->
+            <VBox spacing="10">
+                <HBox spacing="10" alignment="CENTER_LEFT">
+                    <ImageView fitWidth="16" fitHeight="16" preserveRatio="true">
+                        <Image url="@../../icons/competences.png"/>
+                    </ImageView>
+                    <Label  fx:id="competencesRequisesLabel" style="-fx-text-fill: #038156; -fx-font-weight: bold;"/>
+                </HBox>
+                <FlowPane fx:id="competencesPane" hgap="8" vgap="8" style="-fx-padding: 5;">
+                    <!-- Les compétences seront ajoutées dynamiquement -->
+                </FlowPane>
+            </VBox>
+
+            <!-- Séparateur -->
+            <Separator style="-fx-padding: 10 0;"/>
+
+            <!-- Section Informations -->
+            <GridPane hgap="20" vgap="15">
+                <columnConstraints>
+                    <ColumnConstraints hgrow="NEVER" halignment="RIGHT" minWidth="150"/>
+                    <ColumnConstraints hgrow="ALWAYS" halignment="LEFT"/>
+                </columnConstraints>
+
+                <Label  fx:id="nbPostesLabel" style="-fx-text-fill: #858796;" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+                <Label fx:id="nbPostesTextLabel" style="-fx-text-fill: #5a5c69; -fx-font-weight: bold;" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+
+                <Label  fx:id="dateDebutTextLabel" style="-fx-text-fill: #858796;" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+                <Label fx:id="dateDebutLabel" style="-fx-text-fill: #5a5c69; -fx-font-weight: bold;" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+
+                <Label fx:id="dateFinTextLabel" style="-fx-text-fill: #858796;" GridPane.rowIndex="2" GridPane.columnIndex="0"/>
+                <Label fx:id="dateFinLabel" style="-fx-text-fill: #5a5c69; -fx-font-weight: bold;" GridPane.rowIndex="2" GridPane.columnIndex="1"/>
+            </GridPane>
+        </VBox>
+
+        <!-- Boutons d'action -->
+        <HBox spacing="15" alignment="CENTER_RIGHT" style="-fx-padding: 15 0 0 0;">
+            <Button fx:id="retourButton"
+                    text="Retour à la liste"
+                    style="-fx-background-color: transparent; -fx-text-fill: #858796; -fx-border-color: #d1d3e2; -fx-border-radius: 5; -fx-padding: 8 15; -fx-cursor: hand;"
+                    onAction="#handleRetour">
+                <graphic>
+                    <ImageView fitWidth="12" fitHeight="12" preserveRatio="true">
+                        <Image url="@../../icons/retour.png"/>
+                    </ImageView>
+                </graphic>
+            </Button>
+
+            <Button fx:id="postulerButton"
+                    text="Postuler maintenant"
+                    style="-fx-background-color: #158d54; -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 5; -fx-padding: 10 20; -fx-cursor: hand; -fx-effect: dropshadow(gaussian, rgba(21,141,84,0.3), 5, 0, 0, 2);"
+                    onAction="#handlePostuler"
+            />
+        </HBox>
+
+    </VBox>
+</AnchorPane>

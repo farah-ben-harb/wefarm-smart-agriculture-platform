@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<BorderPane xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.terrains.AgriculteurMessagesController">
+    <padding>
+        <Insets top="10" right="10" bottom="10" left="10"/>
+    </padding>
+
+    <!-- En-tête -->
+    <top>
+        <Label fx:id="headerLabel" text="Messagerie de l'agriculteur" style="-fx-font-size: 18px; -fx-font-weight: bold; -fx-text-fill: #2c3e50;"/>
+    </top>
+
+    <!-- Liste des conversations (gauche) -->
+    <left>
+        <VBox spacing="10" prefWidth="250">
+            <Label text="Conversations" style="-fx-font-size: 14px; -fx-font-weight: bold;"/>
+            <ListView fx:id="conversationsListView" prefHeight="600" styleClass="conversation-list"/>
+        </VBox>
+    </left>
+
+    <!-- Zone de discussion (droite) -->
+    <center>
+        <VBox spacing="10" alignment="TOP_CENTER">
+            <Label fx:id="selectedConversationLabel" text="Sélectionnez une conversation" style="-fx-font-size: 14px; -fx-font-weight: bold;"/>
+            <ScrollPane fx:id="messagesScrollPane" fitToWidth="true" prefHeight="500" style="-fx-background-color: #f0f2f5;">
+                <content>
+                    <VBox fx:id="messagesContainer" spacing="10" style="-fx-padding: 10;"/>
+                </content>
+            </ScrollPane>
+            <HBox spacing="10" alignment="CENTER">
+                <TextField fx:id="messageInput" promptText="Écrivez votre message..." prefWidth="500"/>
+                <Button fx:id="sendButton" text="Envoyer" style="-fx-background-color: #007ACC; -fx-text-fill: white;" onAction="#sendMessage"/>
+            </HBox>
+        </VBox>
+    </center>
+
+    <!-- Bouton Rafraîchir (en bas à gauche) -->
+    <bottom>
+        <Button fx:id="refreshButton" text="Rafraîchir" style="-fx-background-color: #2E8B75; -fx-text-fill: white;" onAction="#refreshMessages">
+            <BorderPane.margin>
+                <Insets left="10" bottom="10"/>
+            </BorderPane.margin>
+        </Button>
+    </bottom>
+</BorderPane>

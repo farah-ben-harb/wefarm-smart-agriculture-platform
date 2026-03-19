@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<?import javafx.scene.text.Text?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.image.Image?>
+<BorderPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="controllers.NavbarBackController"
+            prefHeight="400.0" prefWidth="200.0">
+    <!-- NavBar gauche -->
+    <left>
+        <VBox spacing="20" style="-fx-background-color: #1cc88a; -fx-padding: 20px; -fx-alignment: top_left;">
+
+            <!-- Logo -->
+            <HBox alignment="CENTER_LEFT" spacing="10">
+                <ImageView fitHeight="67.0" fitWidth="66.0" preserveRatio="true">
+                    <Image url="@../img/icone.png"/>
+                </ImageView>
+                <Label style="-fx-font-size: 20px; -fx-text-fill: white; -fx-font-weight: bold;" text="WEFARM" />
+            </HBox>
+
+            <!-- Séparateur sous le logo -->
+            <Separator style="-fx-opacity: 0.3;" />
+
+            <!-- Menu de navigation -->
+            <VBox spacing="30" style="-fx-background-color: #1cc88a; -fx-alignment: top_left;">
+                <Label fx:id="dashboardLabel"
+                       onMouseClicked="#goToDashboard"
+                       style="-fx-text-fill: white; -fx-padding: 10 5; -fx-font-size: 16px;-fx-font-weight: bold;"
+                       text="🏠 Tableau de bord" />
+                <Separator style="-fx-opacity: 0.3;" />
+                <!-- Titre gestion -->
+                <Label text="Gestions" style="-fx-text-fill: #e6e5e5; -fx-font-size: 16px; -fx-font-weight: bold; -fx-padding: 5 0;" />
+
+                <HBox fx:id="usersHBox" onMouseClicked="#openAdminPage" spacing="5" alignment="CENTER_LEFT" style="-fx-cursor: hand;">
+                    <Text text="👤" style="-fx-fill: white; -fx-opacity: 0.6; -fx-font-size: 16px;" />
+                    <Text text="Utilisateurs" style="-fx-fill: white; -fx-font-size: 16px;" />
+                </HBox>
+
+
+
+                <HBox fx:id="venteHBox" spacing="5" alignment="CENTER_LEFT" onMouseClicked="#openVentesPage" style="-fx-cursor: hand;">
+                    <Text text="💰" style="-fx-fill: white; -fx-opacity: 0.6; -fx-font-size: 16px;" />
+                    <Text text="Ventes" style="-fx-fill: white; -fx-font-size: 16px;" />
+                </HBox>
+
+                <HBox fx:id="equipementsHBox" onMouseClicked="#openEquipementPage" spacing="5" alignment="CENTER_LEFT" style="-fx-cursor: hand;">
+                    <Text text="🛠" style="-fx-fill: white; -fx-opacity: 0.6; -fx-font-size: 16px;" />
+                    <Text text="Équipements" style="-fx-fill: white; -fx-font-size: 16px;" />
+                </HBox>
+
+                <HBox fx:id="offreEmploiHBox" onMouseClicked="#openOffreEmploiAdmin" spacing="5" alignment="CENTER_LEFT" style="-fx-cursor: hand;">
+                    <Text text="💼" style="-fx-fill: white; -fx-opacity: 0.6; -fx-font-size: 16px;" />
+                    <Text text="Offres d'emploi" style="-fx-fill: white; -fx-font-size: 16px;" />
+                </HBox>
+
+
+                <HBox fx:id="eventsHBox" onMouseClicked="#openEventsAdmin" spacing="5" alignment="CENTER_LEFT" style="-fx-cursor: hand;">
+                    <Text text="📅" style="-fx-fill: white; -fx-opacity: 0.6; -fx-font-size: 16px;" />
+                    <Text text="Événements" style="-fx-fill: white; -fx-font-size: 16px;" />
+                </HBox>
+
+
+                <HBox  fx:id="TerrainsHBox" onMouseClicked="#openTerrainAdmin" spacing="5" alignment="CENTER_LEFT">
+                    <Text text="🌳" style="-fx-fill: white; -fx-opacity: 0.6; -fx-font-size: 16px;" />
+                    <Text text="Terrains" style="-fx-fill: white; -fx-font-size: 16px;" />
+                </HBox>
+
+            </VBox>
+
+            <VBox  VBox.vgrow="ALWAYS" />
+
+            <!-- Bouton de déconnexion -->
+            <Button fx:id="logoutButton"
+                    onAction="#handleLogOut"
+                    style="-fx-background-color: transparent; -fx-padding: 15 0 0 0; -fx-cursor: hand;">
+                <graphic>
+                    <HBox alignment="CENTER_LEFT" spacing="10">
+                        <ImageView fitHeight="30.0" fitWidth="30.0">
+                            <Image url="@../img/logoutAdmin.png"/>
+                        </ImageView>
+                        <Text style="-fx-fill: white; -fx-font-size: 15px; -fx-font-weight: bold;" text="Déconnexion" />
+                    </HBox>
+                </graphic>
+            </Button>
+        </VBox>
+    </left>
+
+
+
+
+</BorderPane>

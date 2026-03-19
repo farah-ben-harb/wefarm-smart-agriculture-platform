@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.web.WebView?>
+
+<VBox xmlns="http://javafx.com/javafx/17"
+      xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="controllers.terrains.ModifierTerrain"
+      spacing="15"
+      style="-fx-padding: 25; -fx-background-color: #f5f5f5;">
+
+    <Label text="Modifier Terrain"
+           style="-fx-font-size: 22px; -fx-font-weight: bold; -fx-text-fill: #2c3e50;"/>
+
+    <GridPane hgap="12" vgap="12" style="-fx-background-color: white; -fx-padding: 15; -fx-border-radius: 5;">
+        <columnConstraints>
+            <ColumnConstraints percentWidth="30" halignment="RIGHT"/>
+            <ColumnConstraints percentWidth="70"/>
+        </columnConstraints>
+
+        <!-- ID (non modifiable) -->
+        <Label text="ID:" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+        <TextField fx:id="idField" GridPane.rowIndex="0" GridPane.columnIndex="1" editable="false"/>
+
+        <!-- Adresse -->
+        <Label text="Adresse:" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+        <TextField fx:id="adresseField" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+
+        <!-- Surface -->
+        <Label text="Surface (m²):" GridPane.rowIndex="2" GridPane.columnIndex="0"/>
+        <TextField fx:id="surfaceField" GridPane.rowIndex="2" GridPane.columnIndex="1"/>
+
+        <!-- Prix -->
+        <Label text="Prix (TND):" GridPane.rowIndex="3" GridPane.columnIndex="0"/>
+        <TextField fx:id="prixField" GridPane.rowIndex="3" GridPane.columnIndex="1"/>
+
+        <!-- Statut -->
+        <Label text="Statut:" GridPane.rowIndex="4" GridPane.columnIndex="0"/>
+        <ComboBox fx:id="statusCombo" GridPane.rowIndex="4" GridPane.columnIndex="1"/>
+
+        <!-- Description -->
+        <Label text="Description:" GridPane.rowIndex="5" GridPane.columnIndex="0"/>
+        <TextArea fx:id="descriptionArea" GridPane.rowIndex="5" GridPane.columnIndex="1" prefRowCount="3"/>
+
+        <!-- Carte Interactive -->
+        <Label text="Localisation:" GridPane.rowIndex="6" GridPane.columnIndex="0"/>
+        <WebView fx:id="mapView" prefWidth="600" prefHeight="400"
+                 GridPane.rowIndex="6" GridPane.columnIndex="1" GridPane.rowSpan="2"/>
+
+        <!-- Type de sol -->
+        <Label text="Type de sol:" GridPane.rowIndex="8" GridPane.columnIndex="0"/>
+        <TextField fx:id="typeSolField" GridPane.rowIndex="8" GridPane.columnIndex="1"/>
+
+        <!-- Photo -->
+        <Label text="Photo:" GridPane.rowIndex="9" GridPane.columnIndex="0"/>
+        <HBox spacing="10" GridPane.rowIndex="9" GridPane.columnIndex="1">
+            <Button text="Choisir..." onAction="#handleChooseImage"/>
+            <ImageView fx:id="imagePreview" fitWidth="100" fitHeight="100"/>
+        </HBox>
+    </GridPane>
+
+    <HBox spacing="15" alignment="CENTER_RIGHT" style="-fx-padding: 15 0 0 0;">
+        <Button fx:id="cancelButton" text="Annuler" onAction="#handleCancel"
+                style="-fx-background-color: #f44336; -fx-text-fill: white; -fx-font-weight: bold; -fx-padding: 8 20;"/>
+        <Button fx:id="saveButton" text="Enregistrer" onAction="#handleSave"
+                style="-fx-background-color: #4CAF50; -fx-text-fill: white; -fx-font-weight: bold; -fx-padding: 8 20;"/>
+    </HBox>
+</VBox>

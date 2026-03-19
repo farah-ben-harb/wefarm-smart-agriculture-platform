@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.chart.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<?import javafx.scene.control.Label?>
+<BorderPane xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="controllers.Event.StatistiquesReservationsController"
+            fx:id="mainContainer" prefWidth="800" prefHeight="600"
+            style="-fx-background-color: #f8f9fa;">
+
+    <center>
+        <VBox alignment="CENTER" spacing="20" style="-fx-padding: 30;">
+            <Label text="Statistiques de Réservations par Événement"
+                   style="-fx-font-size: 22px; -fx-text-fill: #2d6a4f; -fx-font-weight: bold;" />
+
+            <BarChart fx:id="barChart" title="Nombre de réservations"
+                      prefHeight="450" prefWidth="700"
+                      animated="false" legendVisible="false">
+                <xAxis>
+                    <CategoryAxis fx:id="xAxis" label="Événement" />
+                </xAxis>
+                <yAxis>
+                    <NumberAxis fx:id="yAxis" label="Nombre de Réservations" />
+                </yAxis>
+            </BarChart>
+        </VBox>
+    </center>
+</BorderPane>

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<VBox spacing="15" style="-fx-padding: 20;" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.marketplace.OrderDialogController">
+    <Label text="Détails de la commande" style="-fx-font-size: 18; -fx-font-weight: bold;"/>
+    
+    <GridPane vgap="10" hgap="10">
+        <Label text="Quantité:" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+        <Spinner fx:id="quantitySpinner" min="1" max="100" initialValue="1" 
+                 GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+        
+        <Label text="Mode de paiement:" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+        <ComboBox fx:id="paymentModeCombo" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+        
+        <Label text="Adresse de livraison:" GridPane.rowIndex="2" GridPane.columnIndex="0"/>
+        <TextArea fx:id="deliveryAddressArea" prefRowCount="3" wrapText="true"
+                  GridPane.rowIndex="2" GridPane.columnIndex="1"/>
+                  
+        <Label text="Prix total:" GridPane.rowIndex="3" GridPane.columnIndex="0"/>
+        <Label fx:id="totalPriceLabel" style="-fx-font-weight: bold;" 
+               GridPane.rowIndex="3" GridPane.columnIndex="1"/>
+    </GridPane>
+    
+    <HBox spacing="10" alignment="CENTER_RIGHT">
+        <Button fx:id="cancelButton" text="Annuler" onAction="#handleCancel"/>
+        <Button fx:id="confirmButton" text="Commander" 
+                style="-fx-background-color: #4CAF50; -fx-text-fill: white;"
+                onAction="#handleConfirm"/>
+    </HBox>
+</VBox> 

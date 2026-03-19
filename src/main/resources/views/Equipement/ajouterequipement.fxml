@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<?import javafx.scene.image.ImageView?>
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="550.0" prefWidth="400.0" styleClass="form-container" stylesheets="@/style_css/modern_forms.css" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.Equipement.add_equipement_controller">
+   <children>
+      <HBox alignment="TOP_RIGHT" prefHeight="26.0" prefWidth="144.0">
+         <VBox.margin>
+            <Insets />
+         </VBox.margin>
+      </HBox>
+      <HBox alignment="CENTER" prefHeight="37.0" prefWidth="344.0">
+         <children>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Formulaire équipement" styleClass="form-title">
+               <font>
+                  <Font name="Segoe UI Bold" size="24.0" />
+               </font>
+            </Text>
+         </children>
+      </HBox>
+      <VBox spacing="5.0">
+         <children>
+            <HBox alignment="CENTER" prefHeight="50.0" prefWidth="344.0" spacing="50.0">
+               <children>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Nom:" styleClass="form-label">
+                     <font>
+                        <Font name="Segoe UI Bold" size="18.0" />
+                     </font>
+                  </Text>
+                  <TextField fx:id="nom_equipement" styleClass="form-field" promptText="Entrez le nom de l'équipement" />
+               </children>
+            </HBox>
+            <Text fx:id="nom_error" styleClass="form-error" strokeType="OUTSIDE" strokeWidth="0.0" text="" visible="false">
+               <VBox.margin>
+                  <Insets left="150.0" />
+               </VBox.margin>
+               <font>
+                  <Font size="12.0" />
+               </font>
+            </Text>
+         </children>
+      </VBox>
+      <VBox spacing="5.0">
+         <children>
+            <HBox alignment="CENTER" prefHeight="50.0" prefWidth="344.0" spacing="50.0">
+               <children>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Quantité:" styleClass="form-label">
+                     <font>
+                        <Font name="Segoe UI Bold" size="18.0" />
+                     </font>
+                  </Text>
+                  <TextField fx:id="quantite_disponible" prefHeight="26.0" prefWidth="212.0" styleClass="form-field" promptText="Entrez la quantité disponible" />
+               </children>
+            </HBox>
+            <Text fx:id="quantite_error" styleClass="form-error" strokeType="OUTSIDE" strokeWidth="0.0" text="" visible="false">
+               <VBox.margin>
+                  <Insets left="150.0" />
+               </VBox.margin>
+               <font>
+                  <Font size="12.0" />
+               </font>
+            </Text>
+         </children>
+      </VBox>
+      <VBox spacing="5.0">
+         <children>
+            <HBox alignment="CENTER" prefHeight="50.0" prefWidth="344.0" spacing="50.0">
+               <children>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Prix:" styleClass="form-label">
+                     <font>
+                        <Font name="Segoe UI Bold" size="18.0" />
+                     </font>
+                  </Text>
+                  <TextField fx:id="prix" styleClass="form-field" promptText="Entrez le prix" />
+               </children>
+            </HBox>
+            <Text fx:id="prix_error" styleClass="form-error" strokeType="OUTSIDE" strokeWidth="0.0" text="" visible="false">
+               <VBox.margin>
+                  <Insets left="150.0" />
+               </VBox.margin>
+               <font>
+                  <Font size="12.0" />
+               </font>
+            </Text>
+         </children>
+      </VBox>
+      <VBox spacing="5.0">
+         <children>
+            <HBox alignment="CENTER" prefHeight="50.0" prefWidth="344.0" spacing="50.0">
+               <children>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Image:" styleClass="form-label">
+                     <font>
+                        <Font name="Segoe UI Bold" size="18.0" />
+                     </font>
+                  </Text>
+                  <TextField fx:id="image" styleClass="form-field" promptText="Entrez le chemin de l'image" />
+               </children>
+            </HBox>
+            <Text fx:id="image_error" styleClass="form-error" strokeType="OUTSIDE" strokeWidth="0.0" text="" visible="false">
+               <VBox.margin>
+                  <Insets left="150.0" />
+               </VBox.margin>
+               <font>
+                  <Font size="12.0" />
+               </font>
+            </Text>
+         </children>
+      </VBox>
+      <VBox spacing="5.0">
+         <children>
+            <HBox alignment="CENTER" prefHeight="50.0" prefWidth="344.0" spacing="50.0">
+               <children>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Catégorie:" styleClass="form-label">
+                     <font>
+                        <Font name="Segoe UI Bold" size="18.0" />
+                     </font>
+                  </Text>
+                  <TextField fx:id="category" styleClass="form-field" promptText="Entrez la catégorie" />
+               </children>
+            </HBox>
+            <Text fx:id="category_error" styleClass="form-error" strokeType="OUTSIDE" strokeWidth="0.0" text="" visible="false">
+               <VBox.margin>
+                  <Insets left="150.0" />
+               </VBox.margin>
+               <font>
+                  <Font size="12.0" />
+               </font>
+            </Text>
+         </children>
+      </VBox>
+      <HBox alignment="CENTER" prefHeight="99.0" prefWidth="344.0" spacing="50.0">
+         <children>
+            <Button fx:id="ajouter" mnemonicParsing="false" onAction="#ajouterequipement" text="Ajouter" styleClass="form-button" />
+            <Button fx:id="effacer" mnemonicParsing="false" onAction="#effacerequipement" text="Effacer" styleClass="form-button, clear" />
+         </children>
+      </HBox>
+   </children>
+</VBox>

@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.web.WebView?>
+<?import javafx.scene.layout.StackPane?>
+
+<StackPane xmlns="http://javafx.com/javafx/17"
+           xmlns:fx="http://javafx.com/fxml/1"
+           fx:controller="controllers.terrains.ListeTerrainFrAgr">
+
+    <!-- Contenu principal -->
+    <AnchorPane>
+        <!-- Navbar positionnée en haut -->
+        <fx:include fx:id="navbar" source="../navbarFront.fxml"
+                    AnchorPane.topAnchor="0"
+                    AnchorPane.leftAnchor="0"
+                    AnchorPane.rightAnchor="0"/>
+
+        <!-- Contenu principal sous la navbar -->
+        <VBox layoutY="60"
+              AnchorPane.topAnchor="60"
+              AnchorPane.bottomAnchor="0"
+              AnchorPane.leftAnchor="0"
+              AnchorPane.rightAnchor="0"
+              spacing="20"
+              style="-fx-padding: 20;">
+
+            <!-- Header avec titre et bouton Ajouter -->
+            <HBox alignment="CENTER_LEFT" spacing="20">
+                <Label text="Mes Terrains"
+                       style="-fx-font-size: 24px; -fx-font-weight: bold; -fx-text-fill: #2c3e50;"/>
+
+                <!--<Button text="Ajouter Terrain"
+                        style="-fx-background-color: #2E8B75; -fx-text-fill: white; -fx-font-weight: bold;"
+                        onAction="#openAjoutTerrain"/> -->
+            </HBox>
+
+            <FlowPane fx:id="terrainFlowPane"
+                      hgap="20"
+                      vgap="20"
+                      alignment="TOP_CENTER">
+                <padding>
+                    <Insets top="10" right="10" bottom="10" left="10"/>
+                </padding>
+            </FlowPane>
+        </VBox>
+    </AnchorPane>
+
+    <!-- Bouton flottant pour les conversations -->
+    <Button fx:id="messagesButton"
+            text="📩"
+            style="-fx-background-radius: 50%; -fx-min-width: 40; -fx-min-height: 40; -fx-background-color: #2E8B75; -fx-text-fill: white; -fx-font-size: 16px;"
+            StackPane.alignment="BOTTOM_RIGHT"
+            onAction="#openMessagesInterface">
+        <StackPane.margin>
+            <Insets bottom="80" right="20"/>
+        </StackPane.margin>
+    </Button>
+
+    <!-- Bouton flottant du chatbot -->
+    <Button fx:id="chatbotButton"
+            text="?"
+            style="-fx-background-radius: 50%; -fx-min-width: 40; -fx-min-height: 40; -fx-background-color: #2E8B75; -fx-text-fill: white; -fx-font-weight: bold;"
+            StackPane.alignment="BOTTOM_RIGHT">
+        <StackPane.margin>
+            <Insets bottom="20" right="20"/>
+        </StackPane.margin>
+    </Button>
+
+    <!-- Bouton pour les statistiques -->
+    <!--<Button fx:id="statButton"
+            text="Voir les statistiques"
+            style="-fx-background-color: #007ACC; -fx-text-fill: white; -fx-font-weight: bold;"
+            onAction="#openStatView"
+            StackPane.alignment="BOTTOM_LEFT">
+        <StackPane.margin>
+            <Insets bottom="20" left="20"/>
+        </StackPane.margin>
+    </Button>-->
+
+    <!-- WebView pour le chatbot (caché par défaut) -->
+    <!-- Remplacer le WebView existant par -->
+    <StackPane fx:id="chatbotContainer"
+               visible="false"
+               prefWidth="350"
+               prefHeight="700"
+               StackPane.alignment="BOTTOM_RIGHT">
+        <StackPane.margin>
+            <Insets bottom="20" right="20"/>
+        </StackPane.margin>
+    </StackPane>
+</StackPane>

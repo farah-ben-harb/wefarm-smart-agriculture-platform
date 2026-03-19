@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns="http://javafx.com/javafx/17"
+      xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="controllers.terrains.ListeTransac"
+      spacing="10" style="-fx-padding: 10;">
+
+    <TableView fx:id="transacTable">
+        <columns>
+            <TableColumn text="ID" fx:id="idCol" prefWidth="50"/>
+            <TableColumn text="Montant" fx:id="montantCol" prefWidth="100"/>
+            <TableColumn text="Date" fx:id="dateCol" prefWidth="120"/>
+            <TableColumn text="Type" fx:id="typeCol" prefWidth="100"/>
+            <TableColumn text="Terrain ID" fx:id="terrainIdCol" prefWidth="80"/>
+            <TableColumn text="Client ID" fx:id="clientIdCol" prefWidth="80"/>
+            <TableColumn text="Actions" fx:id="actionsCol" prefWidth="150"/>
+        </columns>
+    </TableView>
+
+    <HBox spacing="10">
+        <Button text="Actualiser" onAction="#refreshTable" style="-fx-background-color: #3498db; -fx-text-fill: white;"/>
+        <Button text="Ajouter" fx:id="ajouterBtn" style="-fx-background-color: #2ecc71; -fx-text-fill: white;"/>
+    </HBox>
+</VBox>

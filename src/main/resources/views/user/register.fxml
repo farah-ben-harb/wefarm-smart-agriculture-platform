@@ -1,0 +1,243 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.collections.FXCollections?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane fx:id="root" prefHeight="600.0" prefWidth="700.0" style="-fx-background-color: #f0f8ff; " xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.User.RegisterController">
+    <left>
+        <StackPane fx:id="leftPane" style="-fx-background-color: #caf3da;">
+            <ImageView fx:id="backgroundImage"
+                       fitWidth="400.0"
+                       fitHeight="600.0"
+                       pickOnBounds="true"
+                       preserveRatio="false">
+                <image>
+                    <Image url="@../../img/signup1.jpg"
+                           preserveRatio="false"
+                           smooth="true" />
+                </image>
+            </ImageView>
+
+            <Rectangle width="400" height="100" fill="rgba(0,0,0,0.3)" />
+
+            <VBox alignment="CENTER" spacing="20.0" style="-fx-padding: 20px;">
+                <Label text="Bienvenue sur WeFarm" textFill="WHITE">
+                    <font>
+                        <Font name="System Bold" size="28.0" />
+                    </font>
+                </Label>
+                <Label text="Rejoignez notre communauté agricole" textFill="WHITE">
+                    <font>
+                        <Font size="16.0" />
+                    </font>
+                </Label>
+            </VBox>
+        </StackPane>
+    </left>
+    <center>
+        <VBox maxWidth="1000"
+              maxHeight="700"
+              alignment="TOP_CENTER"
+              spacing="12.0"
+              style="-fx-background-color: white; -fx-background-radius: 15px; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.1), 10, 0, 0, 5); -fx-padding: 20px;">
+            <HBox alignment="CENTER" spacing="0">
+
+                <Label style="-fx-font-size: 28px; -fx-font-weight: bold; -fx-text-fill: #2c3e50;" text="Sign" />
+                <Label style="-fx-font-size: 28px; -fx-font-weight: bold; -fx-text-fill: #2E8B57;" text="Up" />
+            </HBox>
+
+            <!-- Image de profil -->
+            <StackPane alignment="CENTER" style="-fx-padding: 10px 0;">
+                <ImageView fx:id="profileImage" fitHeight="90.0" fitWidth="90.0" pickOnBounds="true" preserveRatio="false"
+                           style="-fx-border-radius: 50%; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.3), 10, 0, 0, 2);" />
+                <Button fx:id="uploadButton" onAction="#choisirImage" text="📷" prefHeight="20" prefWidth="20"
+                        style="-fx-background-color: transparent; -fx-font-size: 18px; -fx-cursor: hand;" />
+            </StackPane>
+
+            <!-- Formulaire -->
+            <HBox alignment="CENTER_LEFT" spacing="10.0" style="-fx-padding: 20px 0;" HBox.hgrow="ALWAYS">
+                <!-- Colonne gauche -->
+                <!-- Colonne gauche -->
+                <VBox alignment="CENTER_LEFT" prefWidth="700" maxWidth="Infinity" spacing="10.0" HBox.hgrow="ALWAYS">
+                    <HBox alignment="CENTER_LEFT" spacing="15.0" HBox.hgrow="ALWAYS">
+                        <Label prefWidth="140" style="-fx-font-size: 19px; -fx-font-weight: bold;" text="Nom:" />
+                        <Separator orientation="VERTICAL" />
+                        <VBox spacing="1.0">
+                            <TextField fx:id="nomField" promptText="Entrez votre nom" prefWidth="300" prefHeight="40"
+                                       style="-fx-font-size: 18px; -fx-background-color: #f8f9fa; -fx-background-radius: 8px;
+                   -fx-border-radius: 8px; -fx-border-color: #e0e0e0; -fx-padding: 0 12px;" />
+                            <Label fx:id="nomError" textFill="red" style="-fx-font-size: 14px;" />
+                        </VBox>
+
+                    </HBox>
+
+
+                    <HBox alignment="CENTER_LEFT" spacing="15.0" HBox.hgrow="ALWAYS">
+                        <Label prefWidth="140" style="-fx-font-size: 19px; -fx-font-weight: bold;" text="Prénom:" />
+                        <Separator orientation="VERTICAL" />
+
+                        <!-- On encapsule le TextField + Label d'erreur dans une VBox -->
+                        <VBox spacing="1.0">
+                            <TextField fx:id="prenomField" promptText="Entrez votre prénom" prefWidth="300" prefHeight="40"
+                                       style="-fx-font-size: 18px; -fx-background-color: #f8f9fa; -fx-background-radius: 8px;
+                          -fx-border-radius: 8px; -fx-border-color: #e0e0e0; -fx-padding: 0 12px;" />
+                            <Label fx:id="prenomError" textFill="red" style="-fx-font-size: 14px;" />
+                        </VBox>
+                    </HBox>
+
+
+
+                    <HBox alignment="CENTER_LEFT" spacing="15.0" HBox.hgrow="ALWAYS">
+                        <Label prefWidth="140" style="-fx-font-size: 19px; -fx-font-weight: bold;" text="Téléphone:" />
+                        <Separator orientation="VERTICAL" />
+
+                        <!-- VBox pour empiler le champ et le message d'erreur -->
+                        <VBox spacing="1.0">
+                            <TextField fx:id="numTelField" promptText="+216 98 765 432" prefWidth="300" prefHeight="40"
+                                       style="-fx-font-size: 18px; -fx-background-color: #f8f9fa; -fx-background-radius: 8px;
+                          -fx-border-radius: 8px; -fx-border-color: #e0e0e0; -fx-padding: 0 12px;" />
+                            <Label fx:id="numTelError" textFill="red" style="-fx-font-size: 14px;" />
+                        </VBox>
+                    </HBox>
+
+                    <HBox alignment="CENTER_LEFT" spacing="15.0" HBox.hgrow="ALWAYS">
+                        <Label prefWidth="140" style="-fx-font-size: 19px; -fx-font-weight: bold;" text="Adresse:" />
+                        <Separator orientation="VERTICAL" />
+
+                        <!-- VBox pour empiler le champ et le message d'erreur -->
+                        <VBox spacing="1.0">
+                            <TextField fx:id="adresseField" promptText="12 Rue Habib Bourguiba,2082" prefWidth="300" prefHeight="40"
+                                       style="-fx-font-size: 18px; -fx-background-color: #f8f9fa; -fx-background-radius: 8px;
+                          -fx-border-radius: 8px; -fx-border-color: #e0e0e0; -fx-padding: 0 12px;" />
+                            <Label fx:id="adresseError" textFill="red" style="-fx-font-size: 14px;" />
+                        </VBox>
+                    </HBox>
+
+
+                </VBox>
+
+                <!-- Colonne droite -->
+                <!-- Colonne droite -->
+                <VBox alignment="CENTER_LEFT" prefWidth="700" maxWidth="Infinity" spacing="10.0" HBox.hgrow="ALWAYS">
+                    <HBox alignment="CENTER_LEFT" spacing="15.0" HBox.hgrow="ALWAYS">
+                        <Label prefWidth="180" style="-fx-font-size: 19px; -fx-font-weight: bold;" text="Date de naissance:" />
+                        <Separator orientation="VERTICAL" />
+
+                        <!-- VBox pour empiler le champ DatePicker et le message d'erreur -->
+                        <VBox spacing="1.0">
+                            <DatePicker fx:id="dateNaissanceField" promptText="01/01/2000" prefWidth="300" prefHeight="40"
+                                        style="-fx-font-size: 18px; -fx-background-color: #f8f9fa; -fx-background-radius: 8px;
+                           -fx-border-radius: 8px; -fx-border-color: #e0e0e0; -fx-padding: 0 12px;" />
+                            <Label fx:id="dateNaissanceError" textFill="red" style="-fx-font-size: 14px;" />
+                        </VBox>
+                    </HBox>
+
+                    <HBox alignment="CENTER_LEFT" spacing="15.0" HBox.hgrow="ALWAYS">
+                        <Label prefWidth="180" style="-fx-font-size: 19px; -fx-font-weight: bold;" text="Email:" />
+                        <Separator orientation="VERTICAL" />
+
+                        <!-- VBox pour empiler le champ TextField et le message d'erreur -->
+                        <VBox spacing="1.0">
+                            <TextField fx:id="emailField" promptText="exemple@gmail.com" prefWidth="300" prefHeight="40"
+                                       style="-fx-font-size: 18px; -fx-background-color: #f8f9fa; -fx-background-radius: 8px;
+                          -fx-border-radius: 8px; -fx-border-color: #e0e0e0; -fx-padding: 0 12px;" />
+                            <Label fx:id="emailError" textFill="red" style="-fx-font-size: 14px;" />
+                        </VBox>
+                    </HBox>
+
+                    <HBox alignment="CENTER_LEFT" spacing="15.0" HBox.hgrow="ALWAYS">
+                        <Label prefWidth="180" style="-fx-font-size: 19px; -fx-font-weight: bold;" text="Mot de passe:" />
+                        <Separator orientation="VERTICAL" />
+
+                        <!-- VBox pour empiler le champ PasswordField et le message d'erreur -->
+                        <VBox spacing="1.0">
+                            <PasswordField fx:id="mdpField" promptText="Entrez votre mot de passe" prefWidth="300" prefHeight="40"
+                                           style="-fx-font-size: 18px; -fx-background-color: #f8f9fa; -fx-background-radius: 8px;
+                              -fx-border-radius: 8px; -fx-border-color: #e0e0e0; -fx-padding: 0 12px;" />
+                            <Label fx:id="mdpError" textFill="red" style="-fx-font-size: 14px;" />
+                        </VBox>
+                    </HBox>
+
+
+                    <HBox alignment="CENTER_LEFT" spacing="15.0" HBox.hgrow="ALWAYS">
+                        <Label prefWidth="180" style="-fx-font-size: 18px; -fx-font-weight: bold;" text="Rôle:" />
+                        <Separator orientation="VERTICAL" />
+
+                        <!-- VBox pour empiler le ComboBox et le message d'erreur -->
+                        <VBox spacing="1.0">
+                            <ComboBox fx:id="roleComboBox" prefWidth="300" prefHeight="40" style="-fx-font-size: 18px;
+                         -fx-background-color: #f8f9fa; -fx-background-radius: 8px; -fx-border-radius: 8px;
+                         -fx-border-color: #e0e0e0; -fx-padding: 0 12px;" HBox.hgrow="ALWAYS">
+                                <items>
+                                    <FXCollections fx:factory="observableArrayList">
+                                        <String fx:value="ROLE_AGRICULTEUR" />
+                                        <String fx:value="ROLE_EMPOLYE" />
+                                        <String fx:value="ROLE_FOURNISSEUR" />
+                                        <String fx:value="ROLE_CLIENT" />
+                                    </FXCollections>
+                                </items>
+                            </ComboBox>
+
+                            <Label fx:id="roleError" textFill="red" style="-fx-font-size: 14px;" />
+                        </VBox>
+                    </HBox>
+
+
+                </VBox>
+
+            </HBox>
+            <!-- CAPTCHA -->
+            <HBox alignment="CENTER" spacing="10" HBox.hgrow="ALWAYS" style="-fx-margin-top: 20px;">
+                <!-- VBox pour empiler le champ de saisie et l'erreur -->
+                <VBox spacing="1.0">
+                    <TextField fx:id="captchaInput" promptText="Code CAPTCHA"
+                               maxWidth="400" prefHeight="60"
+                               style="-fx-font-size: 18px; -fx-background-color: #f8f9fa; -fx-background-radius: 8px; -fx-border-radius: 8px; -fx-border-color: #e0e0e0; -fx-padding: 0 12px;" />
+
+                    <!-- Message d'erreur -->
+                    <Label fx:id="captchaError" style="-fx-text-fill: red; -fx-font-size: 16px;" />
+                </VBox>
+
+                <!-- Bouton avec une icône de rafraîchissement -->
+                <Button onAction="#refreshCaptcha" style="-fx-background-color: transparent; -fx-cursor: hand; -fx-translate-y: -12;">
+                    <graphic>
+                        <ImageView fitWidth="28" fitHeight="28">
+                            <image>
+                                <Image url="@../../img/reload.png" />
+                            </image>
+                        </ImageView>
+                    </graphic>
+                </Button>
+            </HBox>
+
+            <!-- Affichage de l'image CAPTCHA -->
+            <ImageView fx:id="captchaImage" fitHeight="50" fitWidth="150" />
+
+
+
+            <!-- Boutons -->
+            <HBox alignment="CENTER" spacing="30.0" style="-fx-padding: 20px 0;">
+                <Button fx:id="backButton" onAction="#handleBack" prefHeight="40.0" prefWidth="150.0"
+                        style="-fx-background-color: #f6c23e; -fx-text-fill: white; -fx-font-weight: bold; -fx-font-size: 15px; -fx-background-radius: 8px; -fx-cursor: hand;" text="Retour" />
+                <Button fx:id="enregistrerButton" onAction="#handleRegister" prefHeight="40.0" prefWidth="150.0"
+                        style="-fx-background-color: #2E8B57; -fx-text-fill: white; -fx-font-weight: bold; -fx-font-size: 15px; -fx-background-radius: 8px; -fx-cursor: hand;" text="Enregistrer" />
+            </HBox>
+
+        </VBox>
+    </center>
+</BorderPane>

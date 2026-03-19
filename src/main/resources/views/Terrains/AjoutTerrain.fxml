@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.web.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.collections.FXCollections?>
+<?import java.lang.String?>
+
+<VBox xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="controllers.terrains.AjoutTerrain" spacing="8"
+      style="-fx-background-color: linear-gradient(to bottom, #ffffff, #f8f9fa); -fx-padding: 12;">
+
+    <Label text="Ajouter un Terrain" styleClass="form-title"/>
+
+    <GridPane hgap="8" vgap="8" style="-fx-background-color: #ffffff; -fx-background-radius: 8; -fx-padding: 10; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.05), 5, 0, 0, 1);">
+        <columnConstraints>
+            <ColumnConstraints percentWidth="30"/>
+            <ColumnConstraints percentWidth="70"/>
+        </columnConstraints>
+
+        <!-- Ligne 0 - Adresse -->
+        <Label text="Adresse* :" GridPane.rowIndex="0" styleClass="form-label"/>
+        <TextField fx:id="adresseField" prefWidth="280" promptText="Ex. 123 Rue Exemple" GridPane.rowIndex="0" GridPane.columnIndex="1" styleClass="form-field"/>
+
+        <!-- Ligne 1 - Surface et Prix -->
+        <Label text="Surface (m²)* :" GridPane.rowIndex="1" styleClass="form-label"/>
+        <HBox spacing="8" GridPane.rowIndex="1" GridPane.columnIndex="1" alignment="CENTER_LEFT">
+            <TextField fx:id="surfaceField" prefWidth="130" promptText="Ex. 100" styleClass="form-field"/>
+            <Label text="Prix* :" styleClass="form-label">
+                <HBox.margin>
+                    <Insets left="8"/>
+                </HBox.margin>
+            </Label>
+            <TextField fx:id="prixField" prefWidth="130" promptText="Ex. 5000" styleClass="form-field"/>
+            <Button text="Prédire" onAction="#handlePredictPrice" styleClass="predict-button"/>
+        </HBox>
+
+        <!-- Ligne 2 - Statut et Type de sol -->
+        <Label text="Statut :" GridPane.rowIndex="2" styleClass="form-label"/>
+        <HBox spacing="8" GridPane.rowIndex="2" GridPane.columnIndex="1" alignment="CENTER_LEFT">
+            <ComboBox fx:id="statusCombo" prefWidth="130" styleClass="form-combo"/>
+            <Label text="Type de sol* :" styleClass="form-label">
+                <HBox.margin>
+                    <Insets left="8"/>
+                </HBox.margin>
+            </Label>
+            <ComboBox fx:id="typeSolCombo" prefWidth="130" styleClass="form-combo">
+                <items>
+                    <FXCollections fx:factory="observableArrayList">
+                        <String fx:value="argileux"/>
+                        <String fx:value="calcaire"/>
+                        <String fx:value="alluvieux"/>
+                    </FXCollections>
+                </items>
+            </ComboBox>
+        </HBox>
+
+        <!-- Ligne 3 - Description -->
+        <Label text="Description :" GridPane.rowIndex="3" styleClass="form-label"/>
+        <TextArea fx:id="descriptionArea" wrapText="true" prefHeight="70" prefWidth="280" promptText="Décrivez le terrain..." GridPane.rowIndex="3" GridPane.columnIndex="1" styleClass="form-textarea"/>
+
+        <!-- Ligne 4 - Photo -->
+        <Label text="Photo :" GridPane.rowIndex="4" styleClass="form-label"/>
+        <HBox spacing="8" GridPane.rowIndex="4" GridPane.columnIndex="1" alignment="CENTER_LEFT">
+            <Button text="Choisir" onAction="#handleChooseImage" styleClass="choose-image-button"/>
+            <ImageView fx:id="imagePreview" fitWidth="90" fitHeight="90" preserveRatio="true"/>
+        </HBox>
+
+        <!-- Ligne 5 - Carte -->
+        <Label text="Localisation* (cliquez sur la carte) :" GridPane.rowIndex="5" GridPane.columnSpan="2" styleClass="form-label"/>
+        <!-- Remplacer le WebView par -->
+        <StackPane fx:id="mapContainer" prefHeight="450" prefWidth="600"
+                   GridPane.rowIndex="6" GridPane.columnSpan="2"
+                   style="-fx-border-color: #ccc; -fx-border-width: 1px;">
+            <padding>
+                <Insets top="5" right="5" bottom="5" left="5"/>
+            </padding>
+        </StackPane>   </GridPane>
+
+    <HBox spacing="8" alignment="CENTER_RIGHT">
+        <Button text="Annuler" onAction="#handleCancel" styleClass="cancel-button"/>
+        <Button text="Enregistrer" onAction="#handleSubmit" styleClass="submit-button"/>
+    </HBox>
+</VBox>

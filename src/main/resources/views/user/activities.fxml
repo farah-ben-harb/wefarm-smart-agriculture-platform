@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.control.cell.PropertyValueFactory?>
+<?import javafx.scene.shape.Circle?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
+            prefHeight="700.0" prefWidth="1200.0" style="-fx-background-color: #f8f9fa;"
+            xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="controllers.User.ActivitiesController">
+
+    <left>
+        <fx:include  source="../navbarBack.fxml" />
+
+    </left>
+    <!-- Contenu principal -->
+    <center>
+        <VBox spacing="15" style="-fx-padding: 20;">
+            <!-- En-tête -->
+            <VBox alignment="CENTER" spacing="10" style="-fx-padding: 10 0 20 0;">
+                <!-- Barre supérieure -->
+                <HBox spacing="0" alignment="CENTER" style="-fx-background-color: #ffffff; -fx-padding: 0 0; -fx-border-color: #ddd; -fx-border-width: 0 0 1 0;">
+                    <!-- Groupe recherche + bouton aligné à gauche -->
+                    <HBox spacing="5" alignment="CENTER">
+                        <!-- Champ de recherche avec style transparent -->
+                        <TextField  promptText="Rechercher..."
+                                    style="
+                         -fx-pref-width: 400px;
+                         -fx-background-radius: 20;
+                         -fx-border-radius: 20;
+                         -fx-padding: 8 15;
+                         -fx-background-color: rgba(0,0,0,0.05);
+                         -fx-prompt-text-fill: #a0a0a0;
+                     "/>
+
+                        <!-- Bouton recherche vert -->
+                        <Button text="🔍"
+                                style="
+                       -fx-background-radius: 20;
+                       -fx-padding: 8 15;
+                       -fx-min-width: 40px;
+                       -fx-background-color: #1cc88a;
+                       -fx-text-fill: white;
+                       -fx-font-weight: bold;
+                   "/>
+                    </HBox>
+
+                    <!-- Espace étirable pour repousser les autres éléments à droite -->
+                    <Region HBox.hgrow="ALWAYS" />
+
+                    <!-- Bouton notification style discret -->
+                    <Button  text="🔔"
+                             style="
+                           -fx-padding: 15 20;
+                            -fx-min-width: 60px;
+                            -fx-min-height: 60px;
+                            -fx-background-color: transparent;
+                            -fx-text-fill: #d1d3e2;
+                            -fx-font-size: 18px;
+                            -fx-cursor: hand;
+                       "/>
+
+                    <!-- Bouton message style discret -->
+                    <Button text="📩"
+                            style="
+                            -fx-padding: 15 20;
+                            -fx-min-width: 60px;
+                            -fx-min-height: 60px;
+                            -fx-background-color: transparent;
+                            -fx-text-fill: #d1d3e2;
+                            -fx-font-size: 24px;
+                            -fx-cursor: hand;
+                        "/>
+
+                    <!-- Séparateur avant le menu admin -->
+                    <Separator orientation="VERTICAL" style="-fx-padding: 0 10px;" />
+
+                    <!-- Menu admin avec texte gris -->
+                    <MenuButton style="-fx-background-color: transparent;" HBox.hgrow="NEVER">
+                        <graphic>
+                            <HBox spacing="5" alignment="CENTER">
+                                <Label text="Admin" style="-fx-text-fill: #858796; -fx-font-size: 14px;" />
+                                <ImageView fitHeight="28" fitWidth="28">
+                                    <Image url="@/img/admin.png"/>
+                                </ImageView>
+                            </HBox>
+                        </graphic>
+                        <items>
+                            <MenuItem text="Profil" />
+                            <MenuItem text="Paramètres" />
+                            <MenuItem text="Activité" />
+                            <SeparatorMenuItem />
+                            <MenuItem text="Déconnexion" />
+                        </items>
+                    </MenuButton>
+                </HBox>
+                    <Label text="HISTORIQUE DES ACTIVITÉS"
+                           style="-fx-text-fill: #858796; -fx-font-weight: bold; -fx-font-size: 24;"/>
+                </VBox>
+
+                <!-- Barre de recherche et boutons -->
+                <HBox spacing="15" alignment="CENTER_LEFT">
+                    <!-- Barre de recherche -->
+                    <HBox style="-fx-background-color: white; -fx-border-color: #ced4da; -fx-border-radius: 4; -fx-padding: 5;"
+                          alignment="CENTER_LEFT" HBox.hgrow="ALWAYS">
+                        <ImageView fitHeight="16" fitWidth="16">
+                            <Image url="@../../img/search-icon.png"/>
+                        </ImageView>
+                        <TextField fx:id="searchField"
+                                   promptText="Rechercher..."
+                                   style="-fx-background-color: transparent; -fx-border-width: 0; -fx-padding: 0 5;"
+                                   HBox.hgrow="ALWAYS"/>
+                    </HBox>
+
+                    <!-- Boutons à droite -->
+                    <HBox spacing="10" alignment="CENTER_RIGHT">
+
+
+                        <!-- Bouton Statistiques -->
+                        <Button fx:id="btnStats" onAction="#handleStatsClick"
+                                style="-fx-background-color: #1cc88a; -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 5;">
+                            <graphic>
+                                <HBox alignment="CENTER" spacing="5">
+                                    <ImageView fitHeight="16" fitWidth="16">
+                                        <Image url="@../../img/chart-bar.png"/>
+                                    </ImageView>
+                                    <Label text="Statistiques" style="-fx-text-fill: white; -fx-font-size: 14;"/>
+                                </HBox>
+                            </graphic>
+                        </Button>
+                    </HBox>
+                </HBox>
+
+                <!-- TableView avec ombre portée -->
+                <VBox alignment="CENTER" style="-fx-background-color: white; -fx-padding: 20; -fx-background-radius: 10; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.15), 10, 0, 0, 5);" VBox.vgrow="ALWAYS">
+
+                    <TableView fx:id="tableViewActivities"
+                               style="-fx-background-color: white;
+                  -fx-border-color: #dee2e6;
+                  -fx-border-radius: 5;
+                  -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 10, 0, 0, 3);
+                  -fx-table-cell-border-color: transparent;"
+                               VBox.vgrow="ALWAYS">
+                            <columns>
+                                <TableColumn fx:id="colId" visible="false" />
+                                <TableColumn fx:id="colUserId" visible="false" />
+                                <TableColumn fx:id="colAction" text="Action" style="-fx-alignment: CENTER_LEFT;" prefWidth="200"/>
+                                <TableColumn fx:id="colMetadata" text="Détails" style="-fx-alignment: CENTER_LEFT;" prefWidth="300"/>
+                                <TableColumn fx:id="colDate" text="Date" style="-fx-alignment: CENTER;" prefWidth="200"/>
+                                <TableColumn fx:id="colActions" text="Actions" style="-fx-alignment: CENTER;" prefWidth="150"/>
+                            </columns>
+                            <columnResizePolicy>
+                                <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                            </columnResizePolicy>
+                    </TableView>
+                </VBox>
+            </VBox>
+
+    </center>
+</BorderPane>

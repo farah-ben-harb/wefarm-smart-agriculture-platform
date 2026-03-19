@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<?xml version="1.0" encoding="UTF-8"?>
+<AnchorPane xmlns:fx="http://javafx.com/fxml" fx:controller="controllers.terrains.MessageController">
+    <Label fx:id="messageLabel" layoutX="10.0" layoutY="10.0" />
+</AnchorPane>

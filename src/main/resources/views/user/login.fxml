@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.effect.Glow?>
+<AnchorPane xmlns="http://javafx.com/javafx/8.0.171"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="controllers.User.LoginController">
+
+
+   <BorderPane fx:id="mainContainer" AnchorPane.bottomAnchor="0"
+               AnchorPane.leftAnchor="0" AnchorPane.rightAnchor="0"
+               AnchorPane.topAnchor="0">
+
+      <left>
+         <StackPane fx:id="leftPane" style="-fx-background-color: #caf3da;">
+            <!-- ImageView qui s'adapte au redimensionnement -->
+            <ImageView fx:id="backgroundImage"
+                       fitWidth="400.0"
+                       fitHeight="600.0"
+                       pickOnBounds="true"
+                       preserveRatio="false">
+               <image>
+                  <Image url="@../../img/signup1.jpg"
+                         preserveRatio="false"
+                         smooth="true" />
+               </image>
+            </ImageView>
+
+            <!-- Overlay semi-transparent -->
+            <Rectangle width="400" height="100" fill="rgba(0,0,0,0.3)" />
+
+            <!-- Contenu texte centré -->
+            <VBox alignment="CENTER" spacing="20.0" style="-fx-padding: 20px;">
+               <Label text="Bienvenue sur WeFarm" textFill="WHITE">
+                  <font>
+                     <Font name="System Bold" size="28.0" />
+                  </font>
+               </Label>
+               <Label text="Rejoignez notre communauté agricole" textFill="WHITE">
+                  <font>
+                     <Font size="16.0" />
+                  </font>
+               </Label>
+            </VBox>
+         </StackPane>
+      </left>
+
+
+
+      <!-- Center - Login form -->
+   <center>
+
+
+      <VBox alignment="CENTER" spacing="20.0" style="-fx-padding: 30;" BorderPane.alignment="CENTER">
+         <StackPane fx:id="quoteContainer" prefWidth="50"  prefHeight="50" style="-fx-background-color: rgba(245,255,245,0.9); -fx-background-radius: 12;">
+            <HBox alignment="CENTER" spacing="30" style="-fx-padding: 0px;">
+               <ImageView fx:id="quoteIcon" fitWidth="24" fitHeight="24" />
+               <Label fx:id="quoteLabel" style="-fx-font-size: 14px; -fx-text-fill: #1b5e20; -fx-wrap-text: true; -fx-max-width: 230px;" />
+            </HBox>
+         </StackPane>
+
+         <!-- Form container with shadow and rounded corners -->
+         <StackPane style="-fx-background-color: white; -fx-background-radius: 15px; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.1), 10, 0, 0, 5); -fx-padding: 25px;">
+            <VBox alignment="CENTER_RIGHT" spacing="20.0" style="-fx-padding: 10px;">
+               <!-- Nouveau bouton de sensibilisation -->
+               <Button fx:id="sensibilisationButton" onAction="#goToSensibilisation"
+                       prefHeight="40.0" maxWidth="250.0"
+                       style="-fx-background-color: #158d54; -fx-text-fill: white; -fx-font-weight: bold; -fx-font-size: 15px; -fx-background-radius: 8px; -fx-cursor: hand;"
+                       text="Découvrez notre impact">
+                  <graphic>
+                     <ImageView fitHeight="20.0" fitWidth="20.0">
+                        <image>
+                           <Image url="@/img/sensibilisationLogin.png" />
+                        </image>
+                     </ImageView>
+                  </graphic>
+                  <effect>
+                     <Glow level="0.3" />
+                  </effect>
+               </Button>
+               <!-- Title with icon - "Log in" connected with "in" in green -->
+               <HBox alignment="CENTER" spacing="0">
+                  <Label style="-fx-font-size: 28px; -fx-font-weight: bold; -fx-text-fill: #2c3e50;" text="Log" />
+                  <Label style="-fx-font-size: 28px; -fx-font-weight: bold; -fx-text-fill: #2E8B57;" text="in" />
+                  <ImageView fitHeight="26.0" fitWidth="26.0" pickOnBounds="true" preserveRatio="true" style="-fx-padding: 0 0 0 5;">
+                  </ImageView>
+               </HBox>
+
+               <!-- Email field -->
+               <VBox alignment="CENTER_LEFT" spacing="5.0" style="-fx-padding: 0 20px;">
+                  <Label style="-fx-font-size: 14px; -fx-font-weight: bold; -fx-text-fill: #5a5a5a;" text="Email" />
+                  <TextField fx:id="emailField" prefHeight="38.0" prefWidth="280.0" promptText="example@domain.com" style="-fx-background-color: #f8f9fa; -fx-background-radius: 8px; -fx-border-radius: 8px; -fx-border-color: #e0e0e0; -fx-padding: 0 12px; -fx-font-size: 18px; " />
+                  <Label fx:id="emailErrorLabel" textFill="RED" visible="false"/>
+
+               </VBox>
+
+               <!-- Password field -->
+               <VBox alignment="CENTER_LEFT" spacing="5.0" style="-fx-padding: 0 20px;">
+                  <Label style="-fx-font-size: 14px; -fx-font-weight: bold; -fx-text-fill: #5a5a5a;" text="Password" />
+
+                  <HBox alignment="CENTER_LEFT" style="-fx-background-color: #f8f9fa; -fx-background-radius: 8px; -fx-border-radius: 8px; -fx-border-color: #e0e0e0;">
+                     <!-- Champ de texte pour le mot de passe masqué -->
+                     <PasswordField fx:id="passwordField" prefHeight="38.0" prefWidth="250.0"
+                                    promptText="•••••••••••••••"
+                                    style="-fx-background-color: transparent; -fx-border: none; -fx-padding: 0 10px; -fx-font-size: 18px;
+"
+                                    HBox.hgrow="ALWAYS" />
+
+
+                     <TextField fx:id="passwordTextField" prefHeight="38.0" prefWidth="250.0"
+                                promptText="Password"
+                                style="-fx-background-color: transparent; -fx-border: none; -fx-padding: 0 10px;"
+                                visible="false"
+                                HBox.hgrow="ALWAYS" />
+
+
+                     <!-- Icône pour afficher/masquer le mot de passe -->
+                     <ImageView fx:id="eyeIcon" fitHeight="20.0" fitWidth="20.0"
+                                style="-fx-cursor: hand; -fx-padding: 0 10px 0 0;"
+                                onMouseClicked="#togglePasswordVisibility">
+                        <image>
+                           <Image url="@/img/eye_closed.png" />
+                        </image>
+                     </ImageView>
+                  </HBox>
+                  <Label fx:id="passwordErrorLabel" textFill="RED" visible="false"/>
+
+
+                  <!-- Ligne avec Remember Me à gauche et Forgot Password à droite -->
+                  <HBox alignment="CENTER" spacing="5.0" style="-fx-padding: 5px 0 0 0;">
+                     <CheckBox fx:id="rememberMeCheckBox" text="Remember Me" style="-fx-font-size: 12px; -fx-text-fill: #2c3e50;" />
+                     <Region HBox.hgrow="ALWAYS" />
+                     <Label fx:id="forgetpasswordLabel" style="-fx-font-size: 12px; -fx-text-fill: #2ecc71;
+      -fx-underline: true; -fx-cursor: hand;"
+                            text="Forgot Password?" onMouseClicked="#handleForgotPassword" />
+
+
+                  </HBox>
+               </VBox>
+
+               <!-- Buttons - Changed blue to green -->
+
+               <!-- Buttons - Changed blue to green -->
+               <VBox alignment="CENTER" spacing="8.0">
+                  <Button fx:id="loginButton" onAction="#handleLogin" prefHeight="40.0" prefWidth="280.0" style="-fx-background-color: #2E8B57; -fx-text-fill: white; -fx-font-weight: bold; -fx-font-size: 15px; -fx-background-radius: 8px; -fx-cursor: hand;" text="Sign In" />
+                  <Button fx:id="cameraButton" onAction="#openCameraWindow" prefHeight="40.0" prefWidth="280.0" style="-fx-background-color: #fd7e14; -fx-text-fill: white; -fx-font-weight: bold; -fx-font-size: 15px; -fx-background-radius: 8px; -fx-cursor: hand;" text="Facial Recognition" />
+               </VBox>
+               <!-- Captured image (hidden by default) -->
+               <ImageView fx:id="capturedImageView" fitHeight="140.0" fitWidth="180.0" managed="false" pickOnBounds="true" preserveRatio="true" visible="false" />
+
+               <!-- Registration link - Changed to bright green -->
+               <HBox alignment="CENTER" spacing="5.0">
+                  <Label style="-fx-font-size: 13px; -fx-text-fill: #6b7280;" text="Don't have an account?" />
+                  <Label fx:id="registerLabel" onMouseClicked="#handleRegisterClick" style="-fx-font-size: 13px; -fx-text-fill: #2ecc71; -fx-font-weight: bold; -fx-underline: true; -fx-cursor: hand;" text="Register Now" />
+               </HBox>
+
+            </VBox>
+         </StackPane>
+      </VBox>
+   </center>
+</BorderPane>
+</AnchorPane>

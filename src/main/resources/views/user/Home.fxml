@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Tooltip?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.ToggleButton?>
+<?import javafx.scene.layout.Region?>
+<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #f9f9f9;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.HomeController">
+
+    <ScrollPane fitToHeight="true" fitToWidth="true" hbarPolicy="NEVER" vbarPolicy="AS_NEEDED" AnchorPane.bottomAnchor="0" AnchorPane.leftAnchor="0" AnchorPane.rightAnchor="0" AnchorPane.topAnchor="0">
+        <VBox prefWidth="830.0" spacing="10">
+            <fx:include fx:id="navbar" source="../navbarFront.fxml" />
+            <!-- HBox pour positionner les boutons de traduction et TTS à droite -->
+            <HBox alignment="CENTER_RIGHT" spacing="10" AnchorPane.rightAnchor="10" AnchorPane.topAnchor="10" style="-fx-padding: 0 40 0 0;">
+                <Button fx:id="traduirBtn"
+                        onAction="#toggleTranslation"
+                        style="-fx-background-color: #ffffff;
+                       -fx-text-fill: #158d54;
+                       -fx-font-weight: normal;
+                       -fx-border-radius: 5;
+                       -fx-background-radius: 5;
+                       -fx-padding: 6 12;
+                       -fx-font-size: 13px;
+                       -fx-cursor: hand;">
+                    <graphic>
+                        <ImageView fitWidth="24" fitHeight="24">
+                            <image>
+                                <Image url="@/img/traduir.png" />
+                            </image>
+                        </ImageView>
+                    </graphic>
+                </Button>
+
+                <ImageView fx:id="ttsButton"
+                           onMouseClicked="#toggleTextToSpeech"
+                           fitWidth="30"
+                           fitHeight="30">
+                    <image>
+                        <Image url="@/img/sonOn.png" />
+                    </image>
+                </ImageView>
+            </HBox>
+            <!-- Diaporama d'images -->
+            <!-- Modifiez ces valeurs dans votre diaporama -->
+            <StackPane fx:id="slideshowContainer" prefHeight="600" maxWidth="1800"
+                       AnchorPane.leftAnchor="10" AnchorPane.rightAnchor="10">
+                <!-- Images avec hauteur augmentée -->
+                <ImageView fx:id="imageView1" fitHeight="600" preserveRatio="true" opacity="0">
+                    <Image url="@/img/acceuil-1.jpg"/>
+                </ImageView>
+                <ImageView fx:id="imageView2" fitHeight="600" preserveRatio="true" opacity="0">
+                    <Image url="@/img/acceuil-2.jpg"/>
+                </ImageView>
+                <ImageView fx:id="imageView3" fitHeight="600" preserveRatio="true" opacity="0">
+                    <Image url="@/img/acceuil-3.jpg"/>
+                </ImageView>
+            </StackPane>
+
+            <!-- Contenu supplémentaire pour le défilement -->
+            <VBox spacing="20" style="-fx-padding: 40;" alignment="TOP_CENTER">
+                <!-- Titre centré -->
+                <Label style="-fx-font-size: 24px; -fx-font-weight: bold;" fx:id="servicesText"
+                       alignment="CENTER" maxWidth="Infinity" onMouseClicked="#handleTextClick">
+                    <VBox.margin>
+                        <Insets bottom="20"/>
+                    </VBox.margin>
+                </Label>
+
+
+                <HBox spacing="20" alignment="CENTER">
+                    <!-- Service 1 -->
+                    <VBox prefWidth="400" spacing="10" style="-fx-background-color: #e9f5e9; -fx-padding: 20; -fx-background-radius: 10;">
+                        <Label fx:id="service1Title" style="-fx-font-size: 18px; -fx-font-weight: bold; -fx-alignment: CENTER;"
+                               onMouseClicked="#handleTextClick" />
+                        <Label fx:id="service1Desc" style="-fx-wrap-text: true; -fx-text-alignment: center;"
+                               onMouseClicked="#handleTextClick" />
+                    </VBox>
+
+                    <!-- Service 2 -->
+                    <VBox prefWidth="400" spacing="10" style="-fx-background-color: #e9f5e9; -fx-padding: 20; -fx-background-radius: 10;">
+                        <Label fx:id="service2Title" style="-fx-font-size: 18px; -fx-font-weight: bold; -fx-alignment: CENTER;"
+                               onMouseClicked="#handleTextClick" />
+                        <Label fx:id="service2Desc" style="-fx-wrap-text: true; -fx-text-alignment: center;"
+                               onMouseClicked="#handleTextClick" />
+                    </VBox>
+
+                    <!-- Service 3 -->
+                    <VBox prefWidth="400" spacing="10" style="-fx-background-color: #e9f5e9; -fx-padding: 20; -fx-background-radius: 10;">
+                        <Label fx:id="service3Title" style="-fx-font-size: 18px; -fx-font-weight: bold; -fx-alignment: CENTER;"
+                               onMouseClicked="#handleTextClick" />
+                        <Label fx:id="service3Desc" style="-fx-wrap-text: true; -fx-text-alignment: center;"
+                               onMouseClicked="#handleTextClick" />
+                    </VBox>
+                </HBox>
+
+                <HBox spacing="20" alignment="CENTER">
+                    <!-- Service 4 -->
+                    <VBox prefWidth="400" spacing="10" style="-fx-background-color: #e9f5e9; -fx-padding: 20; -fx-background-radius: 10;">
+                        <Label fx:id="service4Title" style="-fx-font-size: 18px; -fx-font-weight: bold; -fx-alignment: CENTER;"
+                               onMouseClicked="#handleTextClick" />
+                        <Label fx:id="service4Desc" style="-fx-wrap-text: true; -fx-text-alignment: center;"
+                               onMouseClicked="#handleTextClick" />
+                    </VBox>
+
+                    <!-- Service 5 -->
+                    <VBox prefWidth="400" spacing="10" style="-fx-background-color: #e9f5e9; -fx-padding: 20; -fx-background-radius: 10;">
+                        <Label fx:id="service5Title" style="-fx-font-size: 18px; -fx-font-weight: bold; -fx-alignment: CENTER;"
+                               onMouseClicked="#handleTextClick"/>
+                        <Label fx:id="service5Desc" style="-fx-wrap-text: true; -fx-text-alignment: center;"
+                               onMouseClicked="#handleTextClick"/>
+                    </VBox>
+                </HBox>
+
+                <!-- Pied de page avec lien discret -->
+                <HBox alignment="CENTER" spacing="10" style="-fx-padding: 20 0 0 0;">
+                    <Label fx:id="visitLabel" style="-fx-text-fill: #555; -fx-font-size: 14px;" onMouseClicked="#handleTextClick"/>
+                    <Button fx:id="websiteBtn" text="www.wefarm.tn"
+                            style="-fx-background-color: transparent; -fx-text-fill: #2E8B57; -fx-font-size: 14px; -fx-font-weight: bold; -fx-underline: true; -fx-padding: 0;"
+                            onAction="#handleWebsiteClick">
+                        <cursor>
+                            <Cursor fx:constant="HAND"/>
+                        </cursor>
+                    </Button>
+
+                </HBox>
+
+            </VBox>
+
+        </VBox>
+    </ScrollPane>
+
+    <!-- Bouton flottant pour le chatbot en bas à gauche -->
+    <Button fx:id="chatBotBtn" text="?" style="-fx-background-color: #2E8B57; -fx-text-fill: white; -fx-background-radius: 50%; -fx-min-width: 50; -fx-min-height: 50; -fx-max-width: 50; -fx-max-height: 50;"
+            AnchorPane.bottomAnchor="20" AnchorPane.rightAnchor="20" >
+
+        <cursor>
+            <Cursor fx:constant="HAND"/>
+        </cursor>
+    </Button>
+
+    <!-- Chatbot Panel (initialement caché) -->
+    <VBox fx:id="chatBotPanel" visible="false" style="-fx-background-color: white; -fx-border-color: #ddd; -fx-border-radius: 5; -fx-background-radius: 5; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.1), 5, 0, 0, 5);"
+          AnchorPane.bottomAnchor="20" AnchorPane.rightAnchor="20" prefWidth="300" prefHeight="400">
+
+        <!-- Chatbot Header -->
+        <HBox style="-fx-background-color: #2E8B57; -fx-padding: 10; -fx-background-radius: 5 5 0 0;" alignment="CENTER_LEFT">
+            <Label text="Assistant Virtuel" style="-fx-text-fill: white; -fx-font-weight: bold;"/>
+            <Region HBox.hgrow="ALWAYS"/>
+            <Button fx:id="closeChatBotBtn" style="-fx-background-color: transparent; -fx-text-fill: white;" text="X">
+                <cursor>
+                    <Cursor fx:constant="HAND"/>
+                </cursor>
+            </Button>
+        </HBox>
+
+        <!-- Chat Area -->
+        <TextArea fx:id="chatArea" editable="false" style="-fx-background-color: #f9f9f9; -fx-border-width: 0; -fx-wrap-text: true;"
+                  prefHeight="300" prefWidth="300"/>
+
+        <!-- Input Area -->
+        <HBox style="-fx-padding: 10; -fx-spacing: 5;" alignment="CENTER">
+            <TextField fx:id="userInput" promptText="Tapez votre message..." style="-fx-background-radius: 15; -fx-border-radius: 15;"
+                       HBox.hgrow="ALWAYS"/>
+            <ToggleButton fx:id="voiceInputBtn" style="-fx-background-color: #2E8B57; -fx-text-fill: white; -fx-background-radius: 15;">
+                <graphic>
+                    <ImageView fitWidth="16" fitHeight="16">
+                        <image>
+                            <Image url="@/img/microphone.png"/>
+                        </image>
+                    </ImageView>
+                </graphic>
+            </ToggleButton>
+            <Button fx:id="sendMessageBtn" style="-fx-background-color: #2E8B57; -fx-text-fill: white; -fx-background-radius: 15;" text="Envoyer"/>
+        </HBox>
+    </VBox>
+</AnchorPane>

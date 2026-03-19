@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.control.CustomMenuItem?>
+
+<AnchorPane
+        prefHeight="400.0"
+        prefWidth="600.0"
+        style="-fx-background-color: #f9f9f9;"
+        xmlns="http://javafx.com/javafx/23.0.1"
+        xmlns:fx="http://javafx.com/fxml/1"
+        fx:id="rootPane"
+        fx:controller="controllers.navbarFrontController">
+
+    <VBox layoutX="-229.6" layoutY="-43.2" prefWidth="830.0" spacing="10" AnchorPane.bottomAnchor="0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0" AnchorPane.topAnchor="0.0">
+
+        <!-- Navbar -->
+        <HBox alignment="CENTER_RIGHT" spacing="20" style="-fx-background-color: white; -fx-padding: 10;">
+
+            <!--  Image à gauche -->
+            <ImageView translateX="70.0" fitHeight="45.0" fitWidth="278.0" preserveRatio="true">
+                <Image url="@../img/Logo.png"/>
+            </ImageView>
+
+            <!-- Espace flexible -->
+            <Region HBox.hgrow="ALWAYS" />
+
+            <!-- Menus -->
+            <Label fx:id="homeLabel" onMouseClicked="#goToHome" onMouseEntered="#handleHover"
+                   style="-fx-font-size: 16px; -fx-text-fill: #2E8B75; -fx-cursor: hand;-fx-font-weight: bold;" text="Acceuil" />
+            <MenuButton fx:id="servicesMenu" text="Services" onMouseEntered="#handleHover"
+                        style="-fx-font-size: 16px; -fx-background-color: transparent; -fx-text-fill: rgba(27,26,26,0.77); -fx-cursor: hand; -fx-font-weight: bold; -fx-focus-color: transparent; -fx-faint-focus-color: transparent; -fx-background-insets: 0; -fx-background-radius: 0;">
+                <items>
+                    <CustomMenuItem style="-fx-background-color: transparent; -fx-padding: 0;">
+                        <content>
+                            <Label text="MarketPlace"
+                                   style="-fx-padding: 8 16; -fx-text-fill: #1b1a1a; -fx-font-size: 14px;"
+                                   onMouseEntered="#handleHover"
+                                   onMouseClicked="#goToMarketplace"/>
+                        </content>
+                    </CustomMenuItem>
+                    <CustomMenuItem style="-fx-background-color: transparent; -fx-padding: 0;">
+                        <content>
+                            <Label text="Equipements"
+                                   style="-fx-padding: 8 16; -fx-text-fill: #1b1a1a; -fx-font-size: 14px;"
+                                   onMouseEntered="#handleHover"
+                                   onMouseExited="#handleExit"
+                                   onMouseClicked="#openEquipementInterface"/>
+                        </content>
+                    </CustomMenuItem>
+                    <CustomMenuItem style="-fx-background-color: transparent; -fx-padding: 0;">
+                        <content>
+                            <Label text="Offres d'emploi"
+                                   style="-fx-padding: 8 16; -fx-text-fill: #1b1a1a; -fx-font-size: 14px;"
+                                   onMouseEntered="#handleHover"
+                                   onMouseExited="#handleExit"
+                                   onMouseClicked="#openOffresEmploiInterface"/>
+                        </content>
+                    </CustomMenuItem>
+                    <CustomMenuItem style="-fx-background-color: transparent; -fx-padding: 0;">
+                        <content>
+                            <Label fx:id="eventLabel" text="Evénements"
+                                   style="-fx-padding: 8 16; -fx-text-fill: #1b1a1a; -fx-font-size: 14px;"
+                                   onMouseEntered="#handleHover"
+                                   onMouseExited="#handleExit"
+                                   onMouseClicked="#openEventInterface"
+                            />
+                        </content>
+
+                    </CustomMenuItem>
+                    <CustomMenuItem style="-fx-background-color: transparent; -fx-padding: 0;">
+                        <content>
+                            <Label text="Terrains"
+                                   style="-fx-padding: 8 16; -fx-text-fill: #1b1a1a; -fx-font-size: 14px;"
+                                   onMouseEntered="#handleHover"
+                                   onMouseExited="#handleExit"
+                                   onMouseClicked="#goToListeTerrains"/>
+
+                        </content>
+                    </CustomMenuItem>
+                </items>
+            </MenuButton>
+
+            <!-- Profile -->
+            <HBox alignment="CENTER" onMouseClicked="#handleProfileClick" onMouseEntered="#handleHover" spacing="5" style="-fx-background-color: #FFD700; -fx-background-radius: 15; -fx-padding: 5 10 5 10; -fx-cursor: hand;">
+                <ImageView fitHeight="15.0" fitWidth="15.0">
+                    <Image url="@../img/user.png"/>
+                </ImageView>
+                <Label fx:id="profileLabel" style="-fx-font-size: 16px; -fx-text-fill: white; -fx-font-weight: bold;" text="Mon profile" onMouseClicked="#handleProfileClick" onMouseEntered="#handleHover"/>
+            </HBox>
+
+            <!-- Séparateur -->
+            <Line endY="20" stroke="#E0E0E0"/>
+
+            <!-- Bouton de déconnexion avec icône -->
+            <ImageView fx:id="logoutIcon" onMouseClicked="#handleLogOut"
+                       fitHeight="20.0" fitWidth="20.0" style="-fx-cursor: hand;">
+                <Image url="@../img/logout.png"/>
+            </ImageView>
+
+        </HBox>
+
+    </VBox>
+</AnchorPane>

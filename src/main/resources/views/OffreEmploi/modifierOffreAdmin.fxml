@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.image.Image?>
+
+<BorderPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="controllers.OffreEmploi.ModifierOffreEmploiController"
+            stylesheets="@/css/stylesOffresEmploi.css"
+            prefHeight="600.0" prefWidth="800.0">
+    <left>
+        <fx:include source="../navbarBack.fxml" />
+    </left>
+    <center>
+        <VBox spacing="0" alignment="TOP_CENTER">
+            <!-- Barre de recherche élargie en haut -->
+            <HBox style="-fx-background-color: #f8f9fc; -fx-padding: 15 25;" alignment="CENTER" spacing="10">
+                <TextField promptText="Rechercher..."
+                           style="
+                               -fx-pref-width: 600px;
+                               -fx-background-radius: 20;
+                               -fx-border-radius: 20;
+                               -fx-padding: 8 15;
+                               -fx-background-color: white;
+                               -fx-prompt-text-fill: #a0a0a0;
+                               -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 5, 0, 0, 1);
+                           "/>
+                <Button text="🔍"
+                        style="
+                           -fx-background-radius: 20;
+                           -fx-padding: 8 15;
+                           -fx-min-width: 40px;
+                           -fx-background-color: #1cc88a;
+                           -fx-text-fill: white;
+                           -fx-font-weight: bold;
+                       "/>
+
+                <Region HBox.hgrow="ALWAYS" />
+
+                <Button text="🔔"
+                        style="
+                           -fx-padding: 8 15;
+                           -fx-min-width: 40px;
+                           -fx-background-color: transparent;
+                           -fx-text-fill: #d1d3e2;
+                           -fx-font-size: 18px;
+                       "/>
+
+                <Button text="📩"
+                        style="
+                           -fx-padding: 8 15;
+                           -fx-min-width: 40px;
+                           -fx-background-color: transparent;
+                           -fx-text-fill: #d1d3e2;
+                           -fx-font-size: 18px;
+                       "/>
+
+                <MenuButton style="-fx-background-color: transparent;">
+                    <graphic>
+                        <HBox spacing="5" alignment="CENTER">
+                            <Label text="Admin" style="-fx-text-fill: #858796; -fx-font-size: 14px;" />
+                            <ImageView fitHeight="28" fitWidth="28">
+                                <Image url="@/img/admin.png"/>
+                            </ImageView>
+                        </HBox>
+                    </graphic>
+                    <items>
+                        <MenuItem text="Profil" />
+                        <MenuItem text="Paramètres" />
+                        <MenuItem text="Activité" />
+                        <SeparatorMenuItem />
+                        <MenuItem text="Déconnexion" />
+                    </items>
+                </MenuButton>
+            </HBox>
+
+            <!-- Contenu principal -->
+            <HBox spacing="20" alignment="TOP_CENTER" style="-fx-padding: 80;">
+                <!-- Formulaire de modification -->
+                <VBox spacing="15" alignment="TOP_CENTER" style="-fx-padding: 0 20 0 0;">
+                    <Label text="Modifier l'Offre d'Emploi" styleClass="form-title" style="text-align: center; width: 100%;"/>
+
+                    <GridPane hgap="15" vgap="15">
+                        <columnConstraints>
+                            <ColumnConstraints prefWidth="150" halignment="RIGHT"/>
+                            <ColumnConstraints prefWidth="300" halignment="LEFT"/>
+                        </columnConstraints>
+
+                        <!-- Titre -->
+                        <Label text="Titre de l'offre:" styleClass="field-label" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+                        <TextField fx:id="titreField" styleClass="form-field" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+                        <Label fx:id="titreError" style="-fx-text-fill: #e74a3b; -fx-font-size: 12px;" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+
+                        <!-- Description -->
+                        <Label text="Description:" styleClass="field-label" GridPane.rowIndex="2" GridPane.columnIndex="0"/>
+                        <TextArea fx:id="descriptionField" styleClass="form-field" prefRowCount="4"
+                                  GridPane.rowIndex="2" GridPane.columnIndex="1"/>
+                        <Label fx:id="descriptionError" style="-fx-text-fill: #e74a3b; -fx-font-size: 12px;" GridPane.rowIndex="3" GridPane.columnIndex="1"/>
+
+                        <!-- Nombre de postes -->
+                        <Label text="Nombre de postes:" styleClass="field-label" GridPane.rowIndex="4" GridPane.columnIndex="0"/>
+                        <TextField fx:id="nombrePostesField" styleClass="form-field" GridPane.rowIndex="4" GridPane.columnIndex="1"/>
+                        <Label fx:id="nombrePostesError" style="-fx-text-fill: #e74a3b; -fx-font-size: 12px;" GridPane.rowIndex="5" GridPane.columnIndex="1"/>
+
+                        <!-- Localisation -->
+                        <Label text="Localisation:" styleClass="field-label" GridPane.rowIndex="6" GridPane.columnIndex="0"/>
+                        <ComboBox fx:id="localisationComboBox" styleClass="form-field" GridPane.rowIndex="6" GridPane.columnIndex="1"/>
+                        <Label fx:id="localisationError" style="-fx-text-fill: #e74a3b; -fx-font-size: 12px;" GridPane.rowIndex="7" GridPane.columnIndex="1"/>
+                    </GridPane>
+                </VBox>
+
+                <!-- Section droite -->
+                <VBox spacing="15" alignment="TOP_LEFT" style="-fx-padding: 45 0 0 0;">
+                    <GridPane hgap="15" vgap="15">
+                        <columnConstraints>
+                            <ColumnConstraints prefWidth="150" halignment="RIGHT"/>
+                            <ColumnConstraints prefWidth="250" halignment="LEFT"/>
+                        </columnConstraints>
+
+                        <!-- Dates -->
+                        <Label text="Date de début:" styleClass="field-label" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+                        <Label fx:id="dateDebutLabel" styleClass="form-field" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+
+                        <Label text="Date fin estimée:" styleClass="field-label" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+                        <Label fx:id="dateFinLabel" styleClass="form-field" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+
+                        <!-- Statut -->
+                        <Label text="Statut:" styleClass="field-label" GridPane.rowIndex="2" GridPane.columnIndex="0"/>
+                        <ComboBox fx:id="statutComboBox" styleClass="form-field" GridPane.rowIndex="2" GridPane.columnIndex="1"/>
+
+                        <!-- Compétences -->
+                        <Label text="Compétences requises:" styleClass="field-label" GridPane.rowIndex="3" GridPane.columnIndex="0"/>
+                        <TextField fx:id="competencesField" styleClass="form-field" GridPane.rowIndex="3" GridPane.columnIndex="1"/>
+                        <Label fx:id="competencesError" style="-fx-text-fill: #e74a3b; -fx-font-size: 12px;" GridPane.rowIndex="4" GridPane.columnIndex="1"/>
+
+                        <!-- Salaire -->
+                        <Label text="Salaire (TND):" styleClass="field-label" GridPane.rowIndex="5" GridPane.columnIndex="0"/>
+                        <TextField fx:id="salaireField" styleClass="form-field" GridPane.rowIndex="5" GridPane.columnIndex="1"/>
+                        <Label fx:id="salaireError" style="-fx-text-fill: #e74a3b; -fx-font-size: 12px;" GridPane.rowIndex="6" GridPane.columnIndex="1"/>
+                    </GridPane>
+
+                    <!-- Boutons en bas à droite -->
+                    <HBox spacing="15" alignment="BOTTOM_RIGHT" style="-fx-padding: 20 0 0 0;">
+                        <Button text="Annuler" styleClass="cancel-button" onAction="#annulerModifications"/>
+                        <Button text="Enregistrer" styleClass="save-button" onAction="#enregistrerModifications"/>
+                    </HBox>
+                </VBox>
+            </HBox>
+        </VBox>
+    </center>
+</BorderPane>

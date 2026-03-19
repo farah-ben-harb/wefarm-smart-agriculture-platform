@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Leaflet Map</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            width: 100%;
+            overflow: hidden;
+        }
+        #map {
+            height: 100%;
+            width: 100%;
+            min-height: 300px;
+        }
+    </style>
+</head>
+<body>
+<div id="map"></div>
+<script>
+    // Initialisation de la carte avec vue sur Tunis par défaut
+    var map = L.map('map').setView([36.8065, 10.1815], 13);
+
+    // Ajout des tuiles OpenStreetMap
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+    }).addTo(map);
+
+    var marker;
+
+    // Gestion du clic sur la carte
+    map.on('click', function(e) {
+        // Supprime l'ancien marqueur s'il existe
+        if (marker) {
+            map.removeLayer(marker);
+        }
+
+        // Ajoute un nouveau marqueur
+        marker = L.marker(e.latlng).addTo(map)
+            .bindPopup("Position sélectionnée:<br>" +
+                e.latlng.lat.toFixed(4) + ", " +
+                e.latlng.lng.toFixed(4))
+            .openPopup();
+
+        // Envoi des coordonnées à JavaFX
+        if (window.java && window.java.updateCoordinates) {
+            window.java.updateCoordinates(e.latlng.lat, e.latlng.lng);
+        }
+    });
+
+    // Fonction pour logger dans la console Java
+    function logToJava(message) {
+        if (window.java && window.java.log) {
+            window.java.log(message);
+        }
+    }
+
+    // Message de confirmation que le script est chargé
+    logToJava("Carte Leaflet initialisée avec succès");
+</script>
+</body>
+</html>

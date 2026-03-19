@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.control.SeparatorMenuItem?>
+<BorderPane prefHeight="400.0" prefWidth="600.0"
+            xmlns="http://javafx.com/javafx/23.0.1"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="controllers.OffreEmploi.CandidaturesOffreAdminController">
+    <left>
+        <fx:include source="../navbarBack.fxml" />
+    </left>
+    <center>
+    <!-- Container central avec bordures et padding -->
+    <VBox layoutX="50.0" layoutY="30.0" spacing="20.0"
+          AnchorPane.leftAnchor="50"
+          AnchorPane.rightAnchor="50"
+          AnchorPane.topAnchor="30"
+          AnchorPane.bottomAnchor="30"
+          style="-fx-background-color: #ffffff; -fx-background-radius: 15px; -fx-padding: 20px; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 10, 0.2, 0, 4);">
+        <!-- Barre supérieure plus compacte -->
+        <HBox spacing="15" alignment="CENTER_LEFT" style="-fx-background-color: #ffffff; -fx-padding: 5 10; -fx-border-color: #ddd; -fx-border-width: 0 0 1 0;">
+            <!-- Groupe recherche + bouton aligné à gauche -->
+            <HBox spacing="5" alignment="CENTER_LEFT">
+                <!-- Champ de recherche avec style transparent -->
+                <TextField promptText="Rechercher..."
+                           style="
+                         -fx-pref-width: 400px;
+                         -fx-background-radius: 20;
+                         -fx-border-radius: 20;
+                         -fx-padding: 8 15;
+                         -fx-background-color: rgba(0,0,0,0.05);
+                         -fx-prompt-text-fill: #a0a0a0;
+                     "/>
+
+                <!-- Bouton recherche vert -->
+                <Button text="🔍"
+                        style="
+                       -fx-background-radius: 20;
+                       -fx-padding: 8 15;
+                       -fx-min-width: 40px;
+                       -fx-background-color: #1cc88a;
+                       -fx-text-fill: white;
+                       -fx-font-weight: bold;
+                   "/>
+            </HBox>
+
+            <!-- Espace étirable pour repousser les autres éléments à droite -->
+            <Region HBox.hgrow="ALWAYS" />
+
+            <!-- Bouton notification style discret -->
+            <Button  text="🔔"
+                     style="
+                           -fx-padding: 15 20;
+                            -fx-min-width: 60px;
+                            -fx-min-height: 60px;
+                            -fx-background-color: transparent;
+                            -fx-text-fill: #d1d3e2;
+                            -fx-font-size: 18px;
+                            -fx-cursor: hand;
+                       "/>
+
+            <!-- Bouton message style discret -->
+            <Button text="📩"
+                    style="
+                            -fx-padding: 15 20;
+                            -fx-min-width: 60px;
+                            -fx-min-height: 60px;
+                            -fx-background-color: transparent;
+                            -fx-text-fill: #d1d3e2;
+                            -fx-font-size: 24px;
+                            -fx-cursor: hand;
+                        "/>
+
+            <!-- Séparateur avant le menu admin -->
+            <Separator orientation="VERTICAL" style="-fx-padding: 0 10px;" />
+
+            <!-- Menu admin avec texte gris -->
+            <MenuButton style="-fx-background-color: transparent;" HBox.hgrow="NEVER">
+                <graphic>
+                    <HBox spacing="5" alignment="CENTER">
+                        <Label text="Admin" style="-fx-text-fill: #858796; -fx-font-size: 14px;" />
+                        <ImageView fitHeight="28" fitWidth="28">
+                            <Image url="@/img/admin.png"/>
+                        </ImageView>
+                    </HBox>
+                </graphic>
+                <items>
+                    <MenuItem text="Profil" />
+                    <MenuItem text="Paramètres" />
+                    <MenuItem text="Activité" />
+                    <SeparatorMenuItem />
+                    <MenuItem text="Déconnexion" />
+                </items>
+            </MenuButton>
+        </HBox>
+        <!-- Titre -->
+        <Label fx:id="titreOffreLabel"
+               alignment="CENTER"
+               textAlignment="CENTER"
+               maxWidth="Infinity"
+               style="-fx-font-size: 24px; -fx-font-weight: bold; -fx-text-fill: #858796;"
+               VBox.vgrow="NEVER"/>
+
+        <!-- Tableau -->
+        <TableView fx:id="candidaturesTable"
+                   prefHeight="300"
+                   maxWidth="Infinity"
+                    style="-fx-table-cell-border-color: transparent;
+                    -fx-border-color: transparent;
+                    -fx-focus-color: transparent;">
+
+            <columns>
+                <TableColumn fx:id="colIdCandidature" text="ID Candidature" />
+                <TableColumn fx:id="colCompetences" text="Compétences" />
+                <TableColumn fx:id="colOffreTitre" text="Offre" />
+                <TableColumn fx:id="colNomPrenom" text="Employé (Nom et prénom)" />
+                <TableColumn fx:id="colDate" text="Date de Candidature" />
+                <TableColumn fx:id="colEtat" text="État" />
+                <TableColumn fx:id="colActions" text="Actions" />
+            </columns>
+            <placeholder>
+                <Label text="Aucune candidature trouvée."
+                       style="-fx-text-fill: #999999; -fx-font-style: italic;" />
+            </placeholder>
+        </TableView>
+
+    </VBox>
+    </center>
+
+</BorderPane>

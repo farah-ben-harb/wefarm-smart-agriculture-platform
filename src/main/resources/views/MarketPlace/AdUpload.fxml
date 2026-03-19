@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Font?>
+<?import java.net.URL?>
+
+<VBox spacing="20" style="-fx-background-color: #f4f4f4;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.marketplace.AdUploadController">
+    <padding>
+        <Insets top="30" right="40" bottom="30" left="40"/>
+    </padding>
+
+    <Label text="Gestion des Publicités" style="-fx-font-size: 24; -fx-font-weight: bold;"/>
+
+    <!-- Upload Form Section -->
+    <GridPane hgap="15" vgap="15" styleClass="form-section">
+        <Label text="Image:" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
+        <HBox spacing="10" alignment="CENTER_LEFT" GridPane.columnIndex="1" GridPane.rowIndex="0">
+            <Label fx:id="imagePathLabel" text="Aucune image sélectionnée"/>
+            <Button fx:id="selectImageBtn" text="Parcourir"/>
+            <ProgressIndicator fx:id="uploadProgress" visible="false" prefHeight="20" prefWidth="20"/>
+        </HBox>
+
+        <Label text="Date de début:" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+        <DatePicker fx:id="startDatePicker" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+
+        <Label text="Date de fin:" GridPane.columnIndex="0" GridPane.rowIndex="2"/>
+        <DatePicker fx:id="endDatePicker" GridPane.columnIndex="1" GridPane.rowIndex="2"/>
+
+        <Label text="Actif:" GridPane.columnIndex="0" GridPane.rowIndex="3"/>
+        <CheckBox fx:id="isActiveCheckbox" selected="true" GridPane.columnIndex="1" GridPane.rowIndex="3"/>
+
+        <HBox spacing="10" alignment="CENTER_RIGHT" GridPane.columnIndex="1" GridPane.rowIndex="4">
+            <Button fx:id="saveAdBtn" text="Enregistrer" styleClass="add-button"/>
+            <Button fx:id="clearBtn" text="Effacer" styleClass="clear-button"/>
+        </HBox>
+    </GridPane>
+
+    <!-- Ads List Section -->
+    <VBox spacing="10">
+        <Label text="Liste des Publicités" style="-fx-font-size: 18; -fx-font-weight: bold;"/>
+        
+        <TableView fx:id="adsTable" VBox.vgrow="ALWAYS">
+            <columns>
+                <TableColumn fx:id="imageColumn" text="Image" prefWidth="200"/>
+                <TableColumn fx:id="startDateColumn" text="Date de début" prefWidth="150"/>
+                <TableColumn fx:id="endDateColumn" text="Date de fin" prefWidth="150"/>
+                <TableColumn fx:id="isActiveColumn" text="Actif" prefWidth="100"/>
+                <TableColumn fx:id="actionsColumn" text="Actions" prefWidth="100"/>
+            </columns>
+        </TableView>
+    </VBox>
+
+    <stylesheets>
+        <URL value="@../../styles/marketplace.css"/>
+    </stylesheets>
+</VBox> 

@@ -1,0 +1,356 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CustomMenuItem?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.ProgressBar?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.SeparatorMenuItem?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Text?>
+
+<BorderPane prefHeight="400.0" prefWidth="600.0" stylesheets="/css/styleAdmin.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.BackController">
+
+
+    <!-- NavBar gauche -->
+    <left>
+        <VBox spacing="20" style="-fx-background-color: #1cc88a; -fx-padding: 20px; -fx-alignment: top_left;">
+
+            <!-- Logo -->
+            <HBox alignment="CENTER_LEFT" spacing="10">
+                <ImageView fitHeight="67.0" fitWidth="66.0" preserveRatio="true">
+                    <Image url="@../img/icone.png" />
+                </ImageView>
+                <Label style="-fx-font-size: 20px; -fx-text-fill: white; -fx-font-weight: bold;" text="WEFARM" />
+            </HBox>
+
+            <!-- Séparateur sous le logo -->
+            <Separator style="-fx-opacity: 0.3;" />
+
+            <!-- Menu de navigation -->
+            <VBox spacing="30" style="-fx-background-color: #1cc88a; -fx-alignment: top_left;">
+                <Label style="-fx-text-fill: white; -fx-padding: 10 5; -fx-font-size: 16px;-fx-font-weight: bold;" text="🏠 Tableau de bord" />
+                <Separator style="-fx-opacity: 0.3;" />
+                <!-- Titre gestion -->
+                <Label style="-fx-text-fill: #e6e5e5; -fx-font-size: 16px; -fx-font-weight: bold; -fx-padding: 5 0;" text="Gestions" />
+
+                <HBox fx:id="usersHBox" alignment="CENTER_LEFT" onMouseClicked="#openAdminPage" spacing="5" style="-fx-cursor: hand;">
+                    <Text style="-fx-fill: white; -fx-opacity: 0.6; -fx-font-size: 16px;" text="👤" />
+                    <Text style="-fx-fill: white; -fx-font-size: 16px;" text="Utilisateurs" />
+                </HBox>
+
+
+
+                <HBox fx:id="venteHBox" alignment="CENTER_LEFT" onMouseClicked="#openVentesPage" spacing="5" style="-fx-cursor: hand;">
+                    <Text style="-fx-fill: white; -fx-opacity: 0.6; -fx-font-size: 16px;" text="💰" />
+                    <Text style="-fx-fill: white; -fx-font-size: 16px;" text="Ventes" />
+                </HBox>
+
+                <HBox fx:id="equipementsHBox" alignment="CENTER_LEFT" onMouseClicked="#openEquipementPage" spacing="5" style="-fx-cursor: hand;">
+                    <Text style="-fx-fill: white; -fx-opacity: 0.6; -fx-font-size: 16px;" text="🛠" />
+                    <Text style="-fx-fill: white; -fx-font-size: 16px;" text="Équipements" />
+                </HBox>
+
+                <HBox fx:id="offreEmploiHBox" alignment="CENTER_LEFT" onMouseClicked="#openOffreEmploiAdmin" spacing="5" style="-fx-cursor: hand;">
+                    <Text style="-fx-fill: white; -fx-opacity: 0.6; -fx-font-size: 16px;" text="💼" />
+                    <Text style="-fx-fill: white; -fx-font-size: 16px;" text="Offres d'emploi" />
+                </HBox>
+
+
+                <HBox fx:id="eventsHBox" alignment="CENTER_LEFT" onMouseClicked="#openEventsAdmin" spacing="5" style="-fx-cursor: hand;">
+                    <Text style="-fx-fill: white; -fx-opacity: 0.6; -fx-font-size: 16px;" text="📅" />
+                    <Text style="-fx-fill: white; -fx-font-size: 16px;" text="Événements" />
+                </HBox>
+
+
+                <HBox fx:id="TerrainsHBox" alignment="CENTER_LEFT" onMouseClicked="#openTerrainAdmin" spacing="5">
+                    <Text style="-fx-fill: white; -fx-opacity: 0.6; -fx-font-size: 16px;" text="🌳" />
+                    <Text style="-fx-fill: white; -fx-font-size: 16px;" text="Terrains" />
+                </HBox>
+
+            </VBox>
+
+            <VBox VBox.vgrow="ALWAYS" />
+
+            <!-- Bouton de déconnexion -->
+            <Button fx:id="logoutButton" onAction="#handleLogOut" style="-fx-background-color: transparent; -fx-padding: 15 0 0 0; -fx-cursor: hand;">
+                <graphic>
+                    <HBox alignment="CENTER_LEFT" spacing="10">
+                        <ImageView fitHeight="30.0" fitWidth="30.0">
+                            <Image url="@../img/logoutAdmin.png" />
+                        </ImageView>
+                        <Text style="-fx-fill: white; -fx-font-size: 15px; -fx-font-weight: bold;" text="Déconnexion" />
+                    </HBox>
+                </graphic>
+            </Button>
+        </VBox>
+    </left>
+
+    <!-- Contenu principal -->
+    <center>
+        <VBox alignment="TOP_CENTER" spacing="20" style="-fx-padding: 20;">
+            <!-- Barre supérieure -->
+            <HBox alignment="CENTER_LEFT" spacing="20" style="-fx-background-color: #ffffff; -fx-padding: 15 20; -fx-border-color: #ddd; -fx-border-width: 0 0 1 0;">
+                <!-- Groupe recherche + bouton aligné à gauche -->
+                <HBox alignment="CENTER_LEFT" spacing="5">
+                    <!-- Champ de recherche avec style transparent -->
+                    <TextField promptText="Rechercher..." style="                          -fx-pref-width: 400px;                          -fx-background-radius: 20;                          -fx-border-radius: 20;                          -fx-padding: 8 15;                          -fx-background-color: rgba(0,0,0,0.05);                          -fx-prompt-text-fill: #a0a0a0;                      " />
+
+                    <!-- Bouton recherche vert -->
+                    <Button style="                        -fx-background-radius: 20;                        -fx-padding: 8 15;                        -fx-min-width: 40px;                        -fx-background-color: #1cc88a;                        -fx-text-fill: white;                        -fx-font-weight: bold;                    " text="🔍" />
+                </HBox>
+
+                <!-- Espace étirable pour repousser les autres éléments à droite -->
+                <Region HBox.hgrow="ALWAYS" />
+
+                <!-- Bouton notification style discret -->
+                <Button style="                            -fx-padding: 15 20;                             -fx-min-width: 60px;                             -fx-min-height: 60px;                             -fx-background-color: transparent;                             -fx-text-fill: #d1d3e2;                             -fx-font-size: 18px;                             -fx-cursor: hand;                        " text="🔔" />
+
+                <!-- Bouton message style discret -->
+                <Button style="                             -fx-padding: 15 20;                             -fx-min-width: 60px;                             -fx-min-height: 60px;                             -fx-background-color: transparent;                             -fx-text-fill: #d1d3e2;                             -fx-font-size: 24px;                             -fx-cursor: hand;                         " text="📩" />
+
+                <!-- Séparateur avant le menu admin -->
+                <Separator orientation="VERTICAL" style="-fx-padding: 0 10px;" />
+
+                <!-- Menu admin avec texte gris -->
+                <MenuButton style="-fx-background-color: transparent;" HBox.hgrow="NEVER">
+                    <graphic>
+                        <HBox alignment="CENTER" spacing="5">
+                            <Label style="-fx-text-fill: #858796; -fx-font-size: 14px;" text="Admin" />
+                            <ImageView fitHeight="28" fitWidth="28">
+                                <Image url="@/img/admin.png" />
+                            </ImageView>
+                        </HBox>
+                    </graphic>
+                    <items>
+                        <MenuItem text="Profil" />
+                        <MenuItem text="Paramètres" />
+                        <MenuItem text="Activité" />
+                        <SeparatorMenuItem />
+                        <MenuItem text="Déconnexion" />
+                    </items>
+                </MenuButton>
+            </HBox>
+            <!-- Titre + Bouton  -->
+            <HBox alignment="CENTER_LEFT" spacing="10">
+                <Label style="-fx-font-size: 24px; -fx-font-weight: bold; -fx-text-fill: #333;" text="Tableau de bord" />
+
+                <Region HBox.hgrow="ALWAYS" />
+
+                <MenuButton fx:id="servicesMenu" style="-fx-font-size: 16px;
+                -fx-background-color: #4e73df;
+                -fx-text-fill: white !important;
+                 -fx-cursor: hand;
+                 -fx-font-weight: bold;
+                 -fx-focus-color: #ffffff;
+                 -fx-faint-focus-color: #c8d3ce;
+                 -fx-background-radius: 15px;  /* Bords arrondis */
+                 -fx-border-radius: 15px;     /* Bords arrondis pour la bordure */
+                 -fx-background-insets: 0;" text="Statistiques" textFill="#fffdfd" >
+                    <items>
+                        <CustomMenuItem style="-fx-background-color: transparent; -fx-padding: 0;">
+                            <content>
+                                <Label onMouseClicked="#handleStatsButton" style="-fx-padding: 8 16; -fx-text-fill: #1b1a1a; -fx-font-size: 14px;" text="Utilisateurs" />
+                            </content>
+                        </CustomMenuItem>
+                        <CustomMenuItem style="-fx-background-color: transparent; -fx-padding: 0;">
+                            <content>
+                                <Label onMouseClicked="#handleStatsButtonOffres" style="-fx-padding: 8 16; -fx-text-fill: #1b1a1a; -fx-font-size: 14px;" text="Offres d'emploi" />
+                            </content>
+                        </CustomMenuItem>
+                        <CustomMenuItem style="-fx-background-color: transparent; -fx-padding: 0;">
+                            <content>
+                                <Label style="-fx-padding: 8 16; -fx-text-fill: #1b1a1a; -fx-font-size: 14px;" text="Terrains" />
+                            </content>
+                        </CustomMenuItem>
+                        <CustomMenuItem style="-fx-background-color: transparent; -fx-padding: 0;">
+                            <content>
+                                <Label fx:id="eventLabel" style="-fx-padding: 8 16; -fx-text-fill: #1b1a1a; -fx-font-size: 14px;" text="Evénements" />
+                            </content>
+
+                        </CustomMenuItem>
+
+                    </items>
+                </MenuButton>
+            </HBox>
+
+
+            <!-- Ligne de 4 cartes -->
+            <HBox alignment="CENTER" spacing="20">
+
+                <!-- Carte 1 -->
+                <VBox prefWidth="400" style="-fx-background-color: #ffffff; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 10, 0, 0, 2); -fx-padding: 15; -fx-border-width: 0 0 0 5; -fx-border-color: #4e73df;">
+                    <Label style="-fx-font-size: 12px; -fx-text-fill: #4e73df; -fx-font-weight: bold;" text="Revenus (Mensuels)" />
+                    <Label style="-fx-font-size: 20px; -fx-font-weight: bold; -fx-text-fill: #333;" text="50,000 DT" />
+                    <Label style="-fx-font-size: 24px; -fx-text-fill: #d1d3e2;" text="📅" />
+
+                </VBox>
+
+                <!-- Carte 2 -->
+                <VBox prefWidth="400" style="-fx-background-color: #ffffff; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 10, 0, 0, 2); -fx-padding: 15; -fx-border-width: 0 0 0 5; -fx-border-color: #1cc88a;">
+                    <Label style="-fx-font-size: 12px; -fx-text-fill: #1cc88a; -fx-font-weight: bold;" text="Revenus (Annuels)" />
+                    <Label style="-fx-font-size: 20px; -fx-font-weight: bold; -fx-text-fill: #333;" text="1,200,000 DT" />
+                    <Label style="-fx-font-size: 24px; -fx-text-fill: #d1d3e2;" text="🚜" />
+
+                </VBox>
+
+                <!-- Carte 3 -->
+                <VBox prefWidth="400" style="-fx-background-color: #ffffff; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 10, 0, 0, 2); -fx-padding: 15; -fx-border-width: 0 0 0 5; -fx-border-color: #36b9cc;">
+                    <Label style="-fx-font-size: 12px; -fx-text-fill: #36b9cc; -fx-font-weight: bold;" text="Tâches en cours" />
+                    <Label style="-fx-font-size: 20px; -fx-font-weight: bold; -fx-text-fill: #333;" text="70%" />
+                    <ProgressBar progress="0.7" style="-fx-accent: #36b9cc;" />
+                    <Label style="-fx-font-size: 24px; -fx-text-fill: #d1d3e2;" text="🍃" />
+
+                </VBox>
+
+                <!-- Carte 4 -->
+                <VBox prefWidth="400" style="-fx-background-color: #ffffff; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 10, 0, 0, 2); -fx-padding: 15; -fx-border-width: 0 0 0 5; -fx-border-color: #f6c23e;">
+                    <Label style="-fx-font-size: 12px; -fx-text-fill: #f6c23e; -fx-font-weight: bold;" text="Demandes en attente" />
+                    <Label style="-fx-font-size: 20px; -fx-font-weight: bold; -fx-text-fill: #333;" text="18" />
+                    <Label style="-fx-font-size: 24px; -fx-text-fill: #d1d3e2;" text="💬" />
+
+                </VBox>
+            </HBox>
+            <!-- Nouvelle section - Graphiques -->
+            <HBox alignment="CENTER_LEFT" spacing="20" style="-fx-padding: 0 20 0 20;" HBox.hgrow="ALWAYS">
+                <!-- Graphique de l'Aire -->
+                <VBox style="-fx-background-color: #ffffff; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 10, 0, 0, 2); -fx-min-width: 400px; -fx-max-width: 600px;" HBox.hgrow="ALWAYS">
+                    <!-- En-tête de la carte -->
+                    <HBox alignment="CENTER" spacing="10" style="-fx-background-color: #f8f9fa; -fx-padding: 10; -fx-border-width: 0 0 1 0; -fx-border-color: #ddd;">
+                        <Label style="-fx-font-weight: bold; -fx-text-fill: #4e73df;" text="Vue d'Ensemble des Revenus Agricoles" />
+                        <Region HBox.hgrow="ALWAYS" />
+                        <MenuButton style="-fx-background-color: transparent;" text="⋮">
+                            <items>
+                                <MenuItem text="Modifier les données" />
+                                <MenuItem text="Exporter les résultats" />
+                                <SeparatorMenuItem />
+                                <MenuItem text="Voir les détails" />
+                            </items>
+                        </MenuButton>
+                    </HBox>
+
+                    <!-- Corps de la carte -->
+                    <VBox spacing="10" style="-fx-padding: 15;">
+                        <VBox spacing="5">
+                            <Label style="-fx-font-size: 12px;-fx-text-fill: #4e73df;" text="80%" />
+
+                            <ProgressBar progress="0.8">
+                                <styleClass>
+                                    <String fx:value="colored-progress-bar-blue" />
+                                </styleClass>
+                            </ProgressBar>
+                        </VBox>
+                        <VBox spacing="5">
+                            <Label style="-fx-font-size: 12px;-fx-text-fill: #1cc88a;" text="60%" />
+                            <ProgressBar progress="0.6" style="                                 -fx-accent: #1cc88a;                                 -fx-control-inner-background: #e0f5ec;                                 -fx-border-color: #1cc88a;                                 -fx-border-width: 1px;                                 -fx-border-radius: 5px;                             " />
+                        </VBox>
+                        <VBox spacing="5">
+                            <Label style="-fx-font-size: 12px;-fx-text-fill: #36b9cc;" text="40%" />
+                            <ProgressBar progress="0.4" style="                                 -fx-accent: #36b9cc;                                 -fx-control-inner-background: #e0f2f5;                                 -fx-border-color: #36b9cc;                                 -fx-border-width: 1px;                                 -fx-border-radius: 5px;                             " />
+                        </VBox>
+                    </VBox>
+                </VBox>
+
+                <!-- Graphique en Camembert -->
+                <VBox style="-fx-background-color: #ffffff; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 10, 0, 0, 2); -fx-min-width: 300px; -fx-max-width: 400px;">
+                    <!-- En-tête de la carte -->
+                    <HBox alignment="CENTER" spacing="10" style="-fx-background-color: #f8f9fa; -fx-padding: 10; -fx-border-width: 0 0 1 0; -fx-border-color: #ddd;">
+                        <Label style="-fx-font-weight: bold; -fx-text-fill: #4e73df;" text="Sources de Revenus Agricoles" />
+                        <Region HBox.hgrow="ALWAYS" />
+                        <MenuButton style="-fx-background-color: transparent;" text="⋮">
+                            <items>
+                                <MenuItem text="Modifier les sources" />
+                                <MenuItem text="Ajouter une source" />
+                                <SeparatorMenuItem />
+                                <MenuItem text="Exporter les données" />
+                            </items>
+                        </MenuButton>
+                    </HBox>
+
+                    <!-- Corps de la carte -->
+                    <VBox spacing="15" style="-fx-padding: 15;">
+                        <HBox alignment="CENTER_LEFT" spacing="10">
+                            <Label style="-fx-font-weight: bold; -fx-pref-width: 200;" text="Production Directe" />
+                            <Label style="-fx-background-color: #4e73df; -fx-text-fill: white; -fx-padding: 2 10; -fx-background-radius: 10;" text="45%" />
+                        </HBox>
+                        <HBox alignment="CENTER_LEFT" spacing="10">
+                            <Label style="-fx-font-weight: bold; -fx-pref-width: 200;" text="Ventes Sociales" />
+                            <Label style="-fx-background-color: #1cc88a; -fx-text-fill: white; -fx-padding: 2 10; -fx-background-radius: 10;" text="35%" />
+                        </HBox>
+                        <HBox alignment="CENTER_LEFT" spacing="10">
+                            <Label style="-fx-font-weight: bold; -fx-pref-width: 200;" text="Références (Bouche-à-oreille)" />
+                            <Label style="-fx-background-color: #36b9cc; -fx-text-fill: white; -fx-padding: 2 10; -fx-background-radius: 10;" text="20%" />
+                        </HBox>
+                    </VBox>
+                </VBox>
+            </HBox>
+
+            <!-- Section Projets Agricoles -->
+            <VBox prefWidth="800" style="-fx-background-color: #ffffff; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 10, 0, 0, 2);">
+                <!-- En-tête de la carte -->
+                <HBox alignment="CENTER_LEFT" style="-fx-background-color: #f8f9fa; -fx-padding: 10; -fx-border-width: 0 0 1 0; -fx-border-color: #ddd;">
+                    <Label style="-fx-font-weight: bold; -fx-text-fill: #4e73df;" text="Projets Agricoles" />
+                </HBox>
+
+                <!-- Corps de la carte -->
+                <VBox spacing="15" style="-fx-padding: 15;">
+                    <VBox spacing="5">
+                        <HBox alignment="CENTER_LEFT" spacing="10">
+                            <Label style="-fx-font-weight: bold;" text="Migration de Serveur pour Données Agricoles" />
+                            <Region HBox.hgrow="ALWAYS" />
+                            <Label text="20%" />
+                        </HBox>
+                        <ProgressBar progress="0.2" style="-fx-accent: #e74a3b;" />
+                    </VBox>
+
+                    <VBox spacing="5">
+                        <HBox alignment="CENTER_LEFT" spacing="10">
+                            <Label style="-fx-font-weight: bold;" text="Suivi des Ventes de Récoltes" />
+                            <Region HBox.hgrow="ALWAYS" />
+                            <Label text="40%" />
+                        </HBox>
+                        <ProgressBar progress="0.4" style="-fx-accent: #f6c23e;" />
+                    </VBox>
+
+                    <VBox spacing="5">
+                        <HBox alignment="CENTER_LEFT" spacing="10">
+                            <Label style="-fx-font-weight: bold;" text="Base de Données des Cultures" />
+                            <Region HBox.hgrow="ALWAYS" />
+                            <Label text="60%" />
+                        </HBox>
+                        <ProgressBar progress="0.6" style="-fx-accent: #4e73df;" />
+                    </VBox>
+
+                    <VBox spacing="5">
+                        <HBox alignment="CENTER_LEFT" spacing="10">
+                            <Label style="-fx-font-weight: bold;" text="Détails des Paiements des Fournisseurs" />
+                            <Region HBox.hgrow="ALWAYS" />
+                            <Label text="80%" />
+                        </HBox>
+                        <ProgressBar progress="0.8" style="-fx-accent: #36b9cc;" />
+                    </VBox>
+
+                    <VBox spacing="5">
+                        <HBox alignment="CENTER_LEFT" spacing="10">
+                            <Label style="-fx-font-weight: bold;" text="Mise en Place de l'Infrastructure de Ferme" />
+                            <Region HBox.hgrow="ALWAYS" />
+                            <Label text="Complète!" />
+                        </HBox>
+                        <ProgressBar progress="1.0" style="-fx-accent: #1cc88a;" />
+                    </VBox>
+                </VBox>
+            </VBox>
+        </VBox>
+    </center>
+
+
+</BorderPane>

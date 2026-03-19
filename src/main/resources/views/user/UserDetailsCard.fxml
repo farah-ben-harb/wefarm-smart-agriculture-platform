@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.shape.Circle?>
+
+<VBox xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="controllers.User.UserDetailsCardController"
+      alignment="TOP_CENTER" spacing="20"
+      style="-fx-background-color: #f5f9f3; -fx-padding: 30;">
+
+    <!-- Carte contenant les informations - Taille augmentée -->
+    <VBox alignment="CENTER" spacing="25"
+          style="-fx-background-color: white; -fx-background-radius: 10; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.1), 10, 0, 0, 3); -fx-padding: 30;"
+          prefWidth="420" prefHeight="550" maxWidth="450">
+
+        <!-- Titre en haut avec style farming -->
+        <Label text="Détails Utilisateur"
+               style="-fx-font-weight: bold; -fx-text-fill: #3a5a3a; -fx-font-size: 20; -fx-font-family: 'Segoe UI', Arial, sans-serif;">
+            <padding>
+                <Insets bottom="10"/>
+            </padding>
+        </Label>
+
+        <!-- Photo de profil avec cadre naturel -->
+        <StackPane>
+            <Circle radius="65" fill="#e8f5e9" stroke="#81c784" strokeWidth="2"/>
+            <ImageView fx:id="profileImage" fitWidth="120" fitHeight="120" preserveRatio="true">
+                <effect>
+                    <DropShadow radius="5" color="rgba(0,0,0,0.15)" offsetX="2" offsetY="2"/>
+                </effect>
+            </ImageView>
+        </StackPane>
+
+        <!-- Grille d'informations avec style épuré -->
+        <GridPane hgap="15" vgap="15" style="-fx-padding: 10 0 0 0;">
+            <columnConstraints>
+                <ColumnConstraints halignment="RIGHT" minWidth="100" prefWidth="110"/>
+                <ColumnConstraints minWidth="200" prefWidth="220"/>
+            </columnConstraints>
+
+            <children>
+                <!-- Ligne Nom -->
+                <Label text="Nom complet :" style="-fx-text-fill: #5d6d5d; -fx-font-weight: bold;" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+                <Label fx:id="labelNom" style="-fx-font-weight: bold; -fx-text-fill: #2d3e2d;" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+
+                <!-- Ligne Email -->
+                <Label text="Email :" style="-fx-text-fill: #5d6d5d; -fx-font-weight: bold;" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+                <Label fx:id="labelEmail" style="-fx-font-weight: bold; -fx-text-fill: #2d3e2d;" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+
+                <!-- Ligne Adresse -->
+                <Label text="Adresse :" style="-fx-text-fill: #5d6d5d; -fx-font-weight: bold;" GridPane.rowIndex="2" GridPane.columnIndex="0"/>
+                <Label fx:id="labelAdresse" style="-fx-font-weight: bold; -fx-text-fill: #2d3e2d;" GridPane.rowIndex="2" GridPane.columnIndex="1"/>
+
+                <!-- Ligne Téléphone -->
+                <Label text="Téléphone :" style="-fx-text-fill: #5d6d5d; -fx-font-weight: bold;" GridPane.rowIndex="3" GridPane.columnIndex="0"/>
+                <Label fx:id="labelNumTel" style="-fx-font-weight: bold; -fx-text-fill: #2d3e2d;" GridPane.rowIndex="3" GridPane.columnIndex="1"/>
+
+                <!-- Ligne Statut -->
+                <Label text="Statut :" style="-fx-text-fill: #5d6d5d; -fx-font-weight: bold;" GridPane.rowIndex="4" GridPane.columnIndex="0"/>
+                <Label fx:id="labelStatus" style="-fx-font-weight: bold; -fx-font-size: 14;" GridPane.rowIndex="4" GridPane.columnIndex="1"/>
+            </children>
+        </GridPane>
+
+        <!-- Bouton de fermeture discret -->
+        <Button text="Fermer" onAction="#fermerPopup"
+                style="-fx-background-color: #81c784; -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 4; -fx-padding: 8 25; -fx-cursor: hand;"
+                styleClass="farm-button">
+            <effect>
+                <DropShadow radius="3" color="rgba(0,0,0,0.1)" offsetX="1" offsetY="1"/>
+            </effect>
+        </Button>
+    </VBox>
+</VBox>

@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.collections.FXCollections?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.Circle?>
+
+<?import java.lang.String?>
+<BorderPane prefHeight="600.0" prefWidth="700.0" style="-fx-background-color: #F5F5F5; -fx-padding: 20px;"
+            xmlns="http://javafx.com/javafx/23.0.1"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="controllers.User.AddUserAdminController">
+
+    <center>
+        <VBox alignment="TOP_CENTER" prefWidth="500.0" spacing="15.0"
+              style="-fx-background-color: white; -fx-padding: 20px; -fx-border-radius: 10px; -fx-background-radius: 10px;
+                     -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.2), 10, 0, 0, 5);">
+
+            <!-- Image circulaire pour la photo de profil -->
+            <StackPane alignment="CENTER">
+                <ImageView fx:id="profileImage" fitHeight="90.0" fitWidth="90.0" pickOnBounds="true" preserveRatio="false" />
+                <Button fx:id="uploadButton" prefHeight="14.0" prefWidth="19.0" style="-fx-background-color: transparent; -fx-font-size: 20px;" onAction="#choisirImage"/>
+            </StackPane>
+
+            <!-- Formulaire -->
+            <VBox alignment="CENTER_LEFT" prefWidth="400.0" spacing="10.0">
+
+                <HBox spacing="10.0">
+                    <Label prefWidth="140.0" text="Nom:" />
+                    <VBox>
+                        <TextField fx:id="nomField" promptText="Entrez le nom" />
+                        <Label fx:id="nomError" style="-fx-text-fill: red;" />
+                    </VBox>
+                </HBox>
+
+                <HBox spacing="10.0">
+                    <Label prefWidth="140.0" text="Prénom:" />
+                    <VBox>
+                        <TextField fx:id="prenomField" promptText="Entrez le prénom" />
+                        <Label fx:id="prenomError" style="-fx-text-fill: red;" />
+                    </VBox>
+                </HBox>
+
+                <HBox spacing="10.0">
+                    <Label prefWidth="140.0" text="Téléphone:" />
+                    <VBox>
+                        <TextField fx:id="numTelField" promptText="+216 98 765 432" />
+                        <Label fx:id="numTelError" style="-fx-text-fill: red;" />
+                    </VBox>
+                </HBox>
+
+                <HBox spacing="10.0">
+                    <Label prefWidth="140.0" text="Adresse:" />
+                    <VBox>
+                        <TextField fx:id="adresseField" promptText="12 Rue Habib Bourguiba, Tunis" />
+                        <Label fx:id="adresseError" style="-fx-text-fill: red;" />
+                    </VBox>
+                </HBox>
+
+                <HBox spacing="10.0">
+                    <Label prefWidth="140.0" text="Date de naissance:" />
+                    <VBox>
+                        <DatePicker fx:id="dateNaissanceField" />
+                        <Label fx:id="dateNaissanceError" style="-fx-text-fill: red;" />
+                    </VBox>
+                </HBox>
+
+                <HBox spacing="10.0">
+                    <Label prefWidth="140.0" text="Email:" />
+                    <VBox>
+                        <TextField fx:id="emailField" promptText="exemple@gmail.com" />
+                        <Label fx:id="emailError" style="-fx-text-fill: red;" />
+                    </VBox>
+                </HBox>
+
+                <HBox spacing="10.0">
+                    <Label prefWidth="140.0" text="Mot de passe:" />
+                    <VBox>
+                        <PasswordField fx:id="mdpField" promptText="Entrez le mot de passe" />
+                        <Label fx:id="mdpError" style="-fx-text-fill: red;" />
+                    </VBox>
+                </HBox>
+
+                <HBox spacing="10.0">
+                    <Label prefWidth="140.0" text="Rôle:" />
+                    <VBox>
+                        <ComboBox fx:id="roleComboBox">
+                            <items>
+                                <FXCollections fx:factory="observableArrayList">
+                                    <String fx:value="ROLE_AGRICULTEUR" />
+                                    <String fx:value="ROLE_EMPLOYE" />
+                                    <String fx:value="ROLE_FOURNISSEUR" />
+                                    <String fx:value="ROLE_CLIENT" />
+                                </FXCollections>
+                            </items>
+                        </ComboBox>
+                        <Label fx:id="roleError" style="-fx-text-fill: red;" />
+                    </VBox>
+                </HBox>
+
+            </VBox>
+
+            <!-- Boutons -->
+
+            <HBox alignment="CENTER" spacing="30.0" style="-fx-padding: 20px 0;">
+                <!-- Bouton Retour -->
+                <Button fx:id="backButton" onAction="#handleBack" prefHeight="40.0" prefWidth="150.0" style="-fx-background-color: #F4A300;                    -fx-text-fill: white;                    -fx-font-weight: bold;                    -fx-font-size: 15px;                    -fx-background-radius: 8px;                    -fx-cursor: hand;" text="Retour" />
+
+                <!-- Bouton Enregistrer -->
+                <Button fx:id="enregistrerButton" onAction="#handleRegister" prefHeight="40.0" prefWidth="150.0" style="-fx-background-color: #6DBE45;                    -fx-text-fill: white;                    -fx-font-weight: bold;                    -fx-font-size: 15px;                    -fx-background-radius: 8px;                    -fx-cursor: hand;" text="Enregistrer" />
+            </HBox>
+        </VBox>
+    </center>
+
+</BorderPane>

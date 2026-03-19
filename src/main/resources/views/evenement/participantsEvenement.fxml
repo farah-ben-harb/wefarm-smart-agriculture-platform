@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.image.Image?>
+<BorderPane xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="controllers.Event.ParticipantsEvenementController" style="-fx-padding: 20;">
+    <left>
+        <fx:include source="../navbarBack.fxml" />
+    </left>
+
+    <center>
+        <VBox spacing="20" alignment="TOP_CENTER" style="-fx-padding: 0 20;">
+
+            <!-- Barre supérieure -->
+            <HBox spacing="10" alignment="TOP_CENTER" style="-fx-background-color: #ffffff; -fx-padding: 10 20 20 20; -fx-border-color: #ddd; -fx-border-width: 0 0 1 0;">
+                <!-- Groupe recherche + bouton aligné à gauche -->
+                <HBox spacing="5" alignment="CENTER_LEFT">
+                    <!-- Champ de recherche avec style transparent -->
+                    <TextField  promptText="Rechercher..."
+                                style="
+                             -fx-pref-width: 400px;
+                             -fx-background-radius: 20;
+                             -fx-border-radius: 20;
+                             -fx-padding: 8 15;
+                             -fx-background-color: rgba(0,0,0,0.05);
+                             -fx-prompt-text-fill: #a0a0a0;
+                         "/>
+
+                    <!-- Bouton recherche vert -->
+                    <Button text="🔍"
+                            style="
+                           -fx-background-radius: 20;
+                           -fx-padding: 8 15;
+                           -fx-min-width: 40px;
+                           -fx-background-color: #1cc88a;
+                           -fx-text-fill: white;
+                           -fx-font-weight: bold;
+                       "/>
+                </HBox>
+
+                <!-- Espace étirable pour repousser les autres éléments à droite -->
+                <Region HBox.hgrow="ALWAYS" />
+
+                <!-- Bouton notification style discret -->
+                <Button  text="🔔"
+                         style="
+                               -fx-padding: 15 20;
+                                -fx-min-width: 60px;
+                                -fx-min-height: 60px;
+                                -fx-background-color: transparent;
+                                -fx-text-fill: #d1d3e2;
+                                -fx-font-size: 18px;
+                                -fx-cursor: hand;
+                           "/>
+
+                <!-- Bouton message style discret -->
+                <Button text="📩"
+                        style="
+                                -fx-padding: 15 20;
+                                -fx-min-width: 60px;
+                                -fx-min-height: 60px;
+                                -fx-background-color: transparent;
+                                -fx-text-fill: #d1d3e2;
+                                -fx-font-size: 24px;
+                                -fx-cursor: hand;
+                            "/>
+
+                <!-- Séparateur avant le menu admin -->
+                <Separator orientation="VERTICAL" style="-fx-padding: 0 10px;" />
+
+                <!-- Menu admin avec texte gris -->
+                <MenuButton style="-fx-background-color: transparent;" HBox.hgrow="NEVER">
+                    <graphic>
+                        <HBox spacing="5" alignment="CENTER">
+                            <Label text="Admin" style="-fx-text-fill: #858796; -fx-font-size: 14px;" />
+                            <ImageView fitHeight="28" fitWidth="28">
+                                <Image url="@/img/admin.png"/>
+                            </ImageView>
+                        </HBox>
+                    </graphic>
+                    <items>
+                        <MenuItem text="Profil" />
+                        <MenuItem text="Paramètres" />
+                        <MenuItem text="Activité" />
+                        <SeparatorMenuItem />
+                        <MenuItem text="Déconnexion" />
+                    </items>
+                </MenuButton>
+            </HBox>
+
+            <!-- Titre avec icône PNG -->
+            <HBox alignment="CENTER_LEFT" spacing="10" style="-fx-padding: 0 0 15 0;">
+                <ImageView fitWidth="32" fitHeight="32">
+                    <Image url="@/img/reservation.png"/> <!-- Remplacez par le chemin de votre image -->
+                </ImageView>
+                <Label text="Réservations pour l'événement"
+                       style="-fx-font-size: 24px; -fx-font-weight: bold; -fx-text-fill: #2e59a7;"/>
+            </HBox>
+
+            <!-- Tableau sur fond blanc avec ombre et bord arrondi -->
+            <StackPane style="-fx-background-color: white; -fx-background-radius: 10; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.1), 10, 0, 0, 0); -fx-padding: 20;">
+                <TableView fx:id="reservationsTable" style="-fx-background-color: transparent; -fx-border-radius: 10;">
+                    <columns>
+                        <TableColumn fx:id="nomCol" text="Nom" style="-fx-font-size: 14px; -fx-font-weight: bold;"/>
+                        <TableColumn fx:id="prenomCol" text="Prénom" style="-fx-font-size: 14px; -fx-font-weight: bold;"/>
+                        <TableColumn fx:id="titreCol" text="Titre de l'événement" style="-fx-font-size: 14px; -fx-font-weight: bold;"/>
+                        <TableColumn fx:id="dateCol" text="Date de réservation" style="-fx-font-size: 14px; -fx-font-weight: bold;"/>
+                        <TableColumn fx:id="etatCol" text="État" style="-fx-font-size: 14px; -fx-font-weight: bold;"/>
+                        <TableColumn fx:id="actionsCol" text="Actions" style="-fx-font-size: 14px; -fx-font-weight: bold;"/>
+                    </columns>
+                </TableView>
+            </StackPane>
+        </VBox>
+    </center>
+</BorderPane>

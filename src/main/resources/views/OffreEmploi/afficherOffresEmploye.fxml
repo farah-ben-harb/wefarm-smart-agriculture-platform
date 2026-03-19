@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+
+<AnchorPane xmlns="http://javafx.com/javafx/17"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="controllers.OffreEmploi.ListOffreEmploiEmployeController"
+            stylesheets="@/css/stylesOffresEmploi.css"
+            prefHeight="600.0" prefWidth="800.0">
+
+    <!-- Navbar positionnée en haut et prenant toute la largeur -->
+    <fx:include fx:id="navbar" source="../navbarFront.fxml" AnchorPane.topAnchor="0" AnchorPane.leftAnchor="20" AnchorPane.rightAnchor="20"/>
+
+    <!-- Conteneur principal vertical -->
+    <VBox spacing="10" AnchorPane.leftAnchor="180" AnchorPane.rightAnchor="40" AnchorPane.topAnchor="100">
+        <!-- Première ligne : Titre et boutons -->
+        <HBox alignment="CENTER_LEFT" spacing="20">
+            <!-- Titre -->
+            <Label fx:id="titrePage" styleClass="main-title"/>
+            <!-- Élément flexible pour pousser les boutons à droite -->
+            <Region HBox.hgrow="ALWAYS"/>
+
+            <!-- Boutons à droite -->
+            <Button fx:id="mesCandidaturesBtn"
+                    styleClass="add-button"
+                    onAction="#ouvrirMesCandidatures"/>
+
+            <Button fx:id="traduirBtn"
+                    styleClass="add-button"
+                    onAction="#traduireOffres"/>
+        </HBox>
+
+        <!-- Deuxième ligne : Barre de recherche à gauche, bouton filtre à droite -->
+        <HBox alignment="CENTER_LEFT" spacing="10" styleClass="search-container">
+            <!-- Barre de recherche avec icône loupe -->
+            <HBox alignment="CENTER_LEFT" spacing="5">
+                <ImageView fitHeight="20" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                    <Image url="@/icons/search-icon.png" />
+                </ImageView>
+                <TextField fx:id="searchField" styleClass="search-field"/>
+            </HBox>
+
+            <!-- Élément flexible pour pousser le bouton à droite -->
+            <Region HBox.hgrow="ALWAYS"/>
+
+            <!-- Bouton de filtre à droite avec icône (ex: filtre ou croix selon l’état) -->
+            <Button fx:id="toggleLocationFilterBtn"
+                    onAction="#toggleLocationFilter"
+                    prefWidth="40" prefHeight="40"
+                    style="-fx-background-color: transparent;
+               -fx-border-color: transparent;
+               -fx-border-radius: 30;
+               -fx-background-radius: 20;
+               -fx-padding: 5;
+               -fx-cursor: hand;
+               -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 2, 0, 0, 1);">
+                <graphic>
+                    <ImageView fx:id="toggleLocationFilterBtnIcon"
+                               fitWidth="18" fitHeight="18">
+                        <Image url="@/icons/localisation.png" />
+                    </ImageView>
+                </graphic>
+            </Button>
+
+        </HBox>
+
+    </VBox>
+
+    <!-- Contenu principal avec défilement -->
+    <ScrollPane fx:id="mainScroll" styleClass="main-scroll" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="200.0">
+        <TilePane fx:id="offreTilePane" alignment="TOP_LEFT" hgap="30" prefColumns="3" prefTileHeight="280" prefTileWidth="380" styleClass="tile-pane" vgap="30">
+            <padding>
+                <Insets bottom="30" left="30" right="30" top="20" />
+            </padding>
+        </TilePane>
+    </ScrollPane>
+</AnchorPane>

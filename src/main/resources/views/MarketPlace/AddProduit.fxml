@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Font?>
+
+<VBox spacing="10" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
+      fx:controller="controllers.marketplace.AddProductController"
+      style="-fx-background-color: #f5f5f5; -fx-padding: 15;">
+    
+    <Label text="Ajouter un produit" style="-fx-font-size: 24; -fx-font-weight: bold;"/>
+    
+    <GridPane hgap="10" vgap="10" style="-fx-background-color: white; -fx-padding: 15; -fx-background-radius: 5;">
+        <Label text="Nom:" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
+        <TextField fx:id="nomField" GridPane.columnIndex="1" GridPane.rowIndex="0"/>
+        
+        <Label text="Quantité:" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+        <TextField fx:id="quantiteField" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+        
+        <Label text="Prix:" GridPane.columnIndex="0" GridPane.rowIndex="2"/>
+        <TextField fx:id="prixField" GridPane.columnIndex="1" GridPane.rowIndex="2"/>
+        
+        <Label text="Description:" GridPane.columnIndex="0" GridPane.rowIndex="3"/>
+        <TextArea fx:id="descriptionArea" GridPane.columnIndex="1" GridPane.rowIndex="3" 
+                  prefRowCount="3" wrapText="true"/>
+        
+        <Label text="Image:" GridPane.columnIndex="0" GridPane.rowIndex="4"/>
+        <HBox spacing="10" GridPane.columnIndex="1" GridPane.rowIndex="4">
+            <Label fx:id="imagePathLabel" style="-fx-text-fill: #666;"/>
+            <Button fx:id="selectImageBtn" text="Sélectionner" 
+                    style="-fx-background-color: #17a2b8; -fx-text-fill: white;"/>
+        </HBox>
+        
+        <Label text="Catégorie:" GridPane.columnIndex="0" GridPane.rowIndex="5"/>
+        <ComboBox fx:id="categorieCombo" GridPane.columnIndex="1" GridPane.rowIndex="5"/>
+        
+        <Label text="État du stock:" GridPane.columnIndex="0" GridPane.rowIndex="6"/>
+        <ComboBox fx:id="stockDCombo" GridPane.columnIndex="1" GridPane.rowIndex="6"/>
+    </GridPane>
+    
+    <HBox spacing="10" alignment="CENTER_RIGHT">
+        <Button fx:id="cancelBtn" text="Annuler" 
+                style="-fx-background-color: #6c757d; -fx-text-fill: white;"/>
+        <Button fx:id="saveBtn" text="Enregistrer" 
+                style="-fx-background-color: #28a745; -fx-text-fill: white;"/>
+    </HBox>
+</VBox> 

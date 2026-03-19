@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<StackPane xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1"
+           fx:controller="controllers.User.OTPController"
+           style="-fx-background-color: #d8f3e2; -fx-padding: 20px;">
+
+    <!-- Conteneur principal à taille fixe -->
+    <VBox alignment="CENTER" spacing="20"
+          style="-fx-background-color: white; -fx-background-radius: 10; -fx-padding: 30px; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.1), 10, 0, 0, 0);"
+          maxWidth="600" prefWidth="600"
+          maxHeight="700" prefHeight="700">
+
+        <!-- Logo ou icône -->
+        <ImageView fitHeight="170" fitWidth="170" preserveRatio="true">
+            <image>
+                <Image url="@/img/logo1.png" />
+            </image>
+        </ImageView>
+
+        <!-- Titre -->
+        <Label text="Vérification OTP" style="-fx-text-fill: #2c3e50;">
+            <font>
+                <Font name="System Bold" size="18.0" />
+            </font>
+        </Label>
+
+
+
+        <!-- Conteneur pour les champs OTP -->
+        <HBox alignment="CENTER" spacing="10">
+            <TextField fx:id="otpField1" style="-fx-background-radius: 5; -fx-border-radius: 5; -fx-border-color: #bdc3c7; -fx-alignment: center; -fx-font-size: 24;"
+                       maxWidth="60" prefWidth="60" prefHeight="60"/>
+            <TextField fx:id="otpField2" style="-fx-background-radius: 5; -fx-border-radius: 5; -fx-border-color: #bdc3c7; -fx-alignment: center; -fx-font-size: 24;"
+                       maxWidth="60" prefWidth="60" prefHeight="60"/>
+            <TextField fx:id="otpField3" style="-fx-background-radius: 5; -fx-border-radius: 5; -fx-border-color: #bdc3c7; -fx-alignment: center; -fx-font-size: 24;"
+                       maxWidth="60" prefWidth="60" prefHeight="60"/>
+            <TextField fx:id="otpField4" style="-fx-background-radius: 5; -fx-border-radius: 5; -fx-border-color: #bdc3c7; -fx-alignment: center; -fx-font-size: 24;"
+                       maxWidth="60" prefWidth="60" prefHeight="60"/>
+        </HBox>
+
+        <!-- Bouton Valider (élargi) -->
+        <Button fx:id="validateButton" text="Valider le code"
+                onAction="#handleValidateOTP"
+                style="-fx-background-color: #27ae60; -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 5; -fx-cursor: hand; -fx-padding: 0 30;"
+                prefHeight="45" minWidth="200" prefWidth="400" maxWidth="400">
+            <font>
+                <Font size="14.0" />
+            </font>
+        </Button>
+
+        <!-- Bouton Retour (élargi) -->
+        <Button fx:id="backButton" text="Retour"
+                onAction="#handleBack"
+                style="-fx-background-color: #95a5a6; -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 5; -fx-cursor: hand; -fx-padding: 0 30;"
+                prefHeight="45" minWidth="200" prefWidth="400" maxWidth="400">
+            <font>
+                <Font size="14.0" />
+            </font>
+        </Button>
+
+        <!-- Message d'information -->
+        <Label text=""
+               style="-fx-text-fill: #3498db; -fx-font-style: italic;"
+               visible="false" fx:id="infoLabel">
+            <font>
+                <Font size="12.0" />
+            </font>
+        </Label>
+
+        <!-- Remplacez le simple Label par ceci -->
+        <HBox alignment="CENTER" spacing="5">
+            <Label text="Vous n'avez pas reçu de code ? "
+                   style="-fx-text-fill: #7f8c8d;">
+                <font>
+                    <Font size="12.0" />
+                </font>
+            </Label>
+            <Button fx:id="resendButton" text="Renvoyer le code"
+                    onAction="#handleResendCode"
+                    style="-fx-background-color: transparent; -fx-text-fill: #3498db; -fx-underline: true; -fx-padding: 0; -fx-cursor: hand;">
+                <font>
+                    <Font size="12.0" />
+                </font>
+            </Button>
+        </HBox>
+    </VBox>
+</StackPane>

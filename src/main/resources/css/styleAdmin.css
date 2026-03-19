@@ -1,0 +1,56 @@
+/* Style de base pour toutes les ProgressBar */
+.progress-bar {
+    -fx-indeterminate-bar-length: 60;
+    -fx-indeterminate-bar-escape: true;
+    -fx-indeterminate-bar-flip: true;
+    -fx-indeterminate-bar-animation-time: 2;
+}
+
+/* Partie remplie (bar) */
+.progress-bar > .bar {
+    -fx-background-insets: 0;
+    -fx-padding: 0.25em;
+}
+
+/* Partie vide (track) */
+.progress-bar > .track {
+    -fx-background-insets: 0;
+    -fx-background-radius: 0;
+}
+
+/* Couleurs spécifiques */
+.colored-progress-bar-blue {
+    -fx-accent: #4e73df;
+}
+.colored-progress-bar-blue > .bar {
+    -fx-background-color: -fx-accent;
+    -fx-background-radius: 3px;
+}
+.colored-progress-bar-blue > .track {
+    -fx-background-color: #e0e6f5;
+    -fx-background-radius: 3px;
+}
+
+.colored-progress-bar-green {
+    -fx-accent: #1cc88a;
+}
+.colored-progress-bar-green > .bar {
+    -fx-background-color: -fx-accent;
+    -fx-background-radius: 3px;
+}
+.colored-progress-bar-green > .track {
+    -fx-background-color: #e0f5ec;
+    -fx-background-radius: 3px;
+}
+
+.colored-progress-bar-cyan {
+    -fx-accent: #36b9cc;
+}
+.colored-progress-bar-cyan > .bar {
+    -fx-background-color: -fx-accent;
+    -fx-background-radius: 3px;
+}
+.colored-progress-bar-cyan > .track {
+    -fx-background-color: #e0f2f5;
+    -fx-background-radius: 3px;
+}

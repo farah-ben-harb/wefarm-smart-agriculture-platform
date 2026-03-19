@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.collections.FXCollections?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.geometry.*?>
+
+<?import java.lang.String?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.image.Image?>
+<BorderPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="controllers.Event.AjouterEvenementController"
+            stylesheets="@/css/stylesOffresEmploi.css"
+            prefHeight="600.0" prefWidth="800.0">
+
+    <left>
+        <fx:include source="../navbarBack.fxml" />
+    </left>
+    <center>
+    <!-- Main container -->
+    <VBox spacing="10" alignment="TOP_CENTER" style="-fx-padding: 10 20 20 20;" >
+        <!-- Barre supérieure plus compacte -->
+        <HBox spacing="15" alignment="CENTER_LEFT" style="-fx-background-color: #ffffff; -fx-padding: 5 10; -fx-border-color: #ddd; -fx-border-width: 0 0 1 0;">
+            <!-- Groupe recherche + bouton aligné à gauche -->
+            <HBox spacing="5" alignment="CENTER_LEFT">
+                <!-- Champ de recherche avec style transparent -->
+                <TextField  promptText="Rechercher..."
+                            style="
+                         -fx-pref-width: 400px;
+                         -fx-background-radius: 20;
+                         -fx-border-radius: 20;
+                         -fx-padding: 8 15;
+                         -fx-background-color: rgba(0,0,0,0.05);
+                         -fx-prompt-text-fill: #a0a0a0;
+                     "/>
+
+                <!-- Bouton recherche vert -->
+                <Button text="🔍"
+                        style="
+                       -fx-background-radius: 20;
+                       -fx-padding: 8 15;
+                       -fx-min-width: 40px;
+                       -fx-background-color: #1cc88a;
+                       -fx-text-fill: white;
+                       -fx-font-weight: bold;
+                   "/>
+            </HBox>
+
+            <!-- Espace étirable pour repousser les autres éléments à droite -->
+            <Region HBox.hgrow="ALWAYS" />
+
+            <!-- Bouton notification style discret -->
+            <Button  text="🔔"
+                     style="
+                           -fx-padding: 15 20;
+                            -fx-min-width: 60px;
+                            -fx-min-height: 60px;
+                            -fx-background-color: transparent;
+                            -fx-text-fill: #d1d3e2;
+                            -fx-font-size: 18px;
+                            -fx-cursor: hand;
+                       "/>
+
+            <!-- Bouton message style discret -->
+            <Button text="📩"
+                    style="
+                            -fx-padding: 15 20;
+                            -fx-min-width: 60px;
+                            -fx-min-height: 60px;
+                            -fx-background-color: transparent;
+                            -fx-text-fill: #d1d3e2;
+                            -fx-font-size: 24px;
+                            -fx-cursor: hand;
+                        "/>
+
+            <!-- Séparateur avant le menu admin -->
+            <Separator orientation="VERTICAL" style="-fx-padding: 0 10px;" />
+
+            <!-- Menu admin avec texte gris -->
+            <MenuButton style="-fx-background-color: transparent;" HBox.hgrow="NEVER">
+                <graphic>
+                    <HBox spacing="5" alignment="CENTER">
+                        <Label text="Admin" style="-fx-text-fill: #858796; -fx-font-size: 14px;" />
+                        <ImageView fitHeight="28" fitWidth="28">
+                            <Image url="@/img/admin.png"/>
+                        </ImageView>
+                    </HBox>
+                </graphic>
+                <items>
+                    <MenuItem text="Profil" />
+                    <MenuItem text="Paramètres" />
+                    <MenuItem text="Activité" />
+                    <SeparatorMenuItem />
+                    <MenuItem text="Déconnexion" />
+                </items>
+            </MenuButton>
+        </HBox>
+
+        <!-- Title -->
+        <Label text="Ajouter un Événement" styleClass="form-title"/>
+
+        <!-- Form -->
+        <GridPane hgap="15" vgap="5" alignment="CENTER">
+            <columnConstraints>
+                <ColumnConstraints prefWidth="150" halignment="RIGHT"/>
+                <ColumnConstraints prefWidth="300" halignment="LEFT"/>
+                <ColumnConstraints prefWidth="150" halignment="RIGHT"/>
+                <ColumnConstraints prefWidth="300" halignment="LEFT"/>
+            </columnConstraints>
+
+            <!-- Left column -->
+            <!-- Title -->
+            <Label text="📝 Titre" styleClass="field-label" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+            <TextField fx:id="titreField" styleClass="form-field" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+            <Text fx:id="titreError" fill="RED" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+
+            <!-- Description -->
+            <Label text="≡ Description" styleClass="field-label" GridPane.rowIndex="2" GridPane.columnIndex="0"/>
+            <TextArea fx:id="descriptionField" styleClass="form-field" GridPane.rowIndex="2" GridPane.columnIndex="1" prefHeight="100"/>
+            <Text fx:id="descriptionError" fill="RED" GridPane.rowIndex="3" GridPane.columnIndex="1"/>
+
+            <!-- Right column -->
+            <!-- Start date -->
+            <Label text="📅 Date de début" styleClass="field-label" GridPane.rowIndex="0" GridPane.columnIndex="2"/>
+            <DatePicker fx:id="dateDebutPicker" styleClass="form-field" GridPane.rowIndex="0" GridPane.columnIndex="3"/>
+            <Text fx:id="dateDebutError" fill="RED" GridPane.rowIndex="1" GridPane.columnIndex="3"/>
+
+            <!-- Visit type -->
+            <Label text="🔍 Type de visite" styleClass="field-label" GridPane.rowIndex="2" GridPane.columnIndex="2"/>
+            <ComboBox fx:id="typeVisiteComboBox" styleClass="form-field" GridPane.rowIndex="2" GridPane.columnIndex="3">
+            </ComboBox>
+            <Text fx:id="typeVisiteError" fill="RED" GridPane.rowIndex="3" GridPane.columnIndex="3"/>
+
+            <!-- Location -->
+            <Label text="🌍 Localisation" styleClass="field-label" GridPane.rowIndex="4" GridPane.columnIndex="0"/>
+            <TextField fx:id="localisationField" styleClass="form-field" GridPane.rowIndex="4" GridPane.columnIndex="1"/>
+            <Text fx:id="localisationError" fill="RED" GridPane.rowIndex="5" GridPane.columnIndex="1"/>
+
+            <!-- Price -->
+            <Label text="💵 Prix" styleClass="field-label" GridPane.rowIndex="4" GridPane.columnIndex="2"/>
+            <TextField fx:id="prixField" styleClass="form-field" GridPane.rowIndex="4" GridPane.columnIndex="3"/>
+            <Text fx:id="prixError" fill="RED" GridPane.rowIndex="5" GridPane.columnIndex="3"/>
+
+        </GridPane>
+
+        <!-- Buttons -->
+        <HBox spacing="15" alignment="CENTER" style="-fx-padding: 20 0 0 0;">
+            <Button text="Annuler" styleClass="cancel-button" onAction="#annulerAjout" />
+            <Button text="Enregistrer" styleClass="add-button" onAction="#handleSave"/>
+        </HBox>
+    </VBox>
+    </center>
+</BorderPane>

@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.chart.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Font?>
+<?import java.net.URL?>
+
+<VBox spacing="10" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.marketplace.StatisticsDialogController">
+    <padding>
+        <Insets top="20" right="20" bottom="20" left="20"/>
+    </padding>
+
+    <!-- Header -->
+    <HBox alignment="CENTER_LEFT" spacing="20">
+        <Label text="Statistiques" style="-fx-font-size: 24; -fx-font-weight: bold;"/>
+        <Region HBox.hgrow="ALWAYS"/>
+        <ComboBox fx:id="periodCombo" promptText="Période"/>
+    </HBox>
+
+    <!-- Main Content -->
+    <TabPane fx:id="tabPane" VBox.vgrow="ALWAYS">
+        <!-- Products Tab -->
+        <Tab text="Produits" closable="false">
+            <VBox spacing="20">
+                <!-- Product Charts -->
+                <HBox spacing="20">
+                    <!-- Products by Category -->
+                    <VBox styleClass="chart-container" HBox.hgrow="ALWAYS">
+                        <Label text="Produits par Catégorie" styleClass="chart-title"/>
+                        <PieChart fx:id="productsByCategoryChart"/>
+                    </VBox>
+                    
+                    <!-- Products by Stock Status -->
+                    <VBox styleClass="chart-container" HBox.hgrow="ALWAYS">
+                        <Label text="État des Stocks" styleClass="chart-title"/>
+                        <PieChart fx:id="stockStatusChart"/>
+                    </VBox>
+                </HBox>
+                
+                <!-- Product Value Distribution -->
+                <VBox styleClass="chart-container">
+                    <Label text="Valeur des Produits par Catégorie" styleClass="chart-title"/>
+                    <BarChart fx:id="productValueChart">
+                        <xAxis>
+                            <CategoryAxis label="Catégorie"/>
+                        </xAxis>
+                        <yAxis>
+                            <NumberAxis label="Valeur Totale (DT)"/>
+                        </yAxis>
+                    </BarChart>
+                </VBox>
+            </VBox>
+        </Tab>
+
+        <!-- Sales Tab -->
+        <Tab text="Ventes" closable="false">
+            <VBox spacing="20">
+                <!-- Sales Charts -->
+                <HBox spacing="20">
+                    <!-- Monthly Sales -->
+                    <VBox styleClass="chart-container" HBox.hgrow="ALWAYS">
+                        <Label text="Ventes Mensuelles" styleClass="chart-title"/>
+                        <LineChart fx:id="monthlySalesChart">
+                            <xAxis>
+                                <CategoryAxis label="Mois"/>
+                            </xAxis>
+                            <yAxis>
+                                <NumberAxis label="Ventes (DT)"/>
+                            </yAxis>
+                        </LineChart>
+                    </VBox>
+                </HBox>
+
+                <!-- Sales by Category -->
+                <VBox styleClass="chart-container">
+                    <Label text="Ventes par Catégorie" styleClass="chart-title"/>
+                    <BarChart fx:id="salesByCategoryChart">
+                        <xAxis>
+                            <CategoryAxis label="Catégorie"/>
+                        </xAxis>
+                        <yAxis>
+                            <NumberAxis label="Ventes (DT)"/>
+                        </yAxis>
+                    </BarChart>
+                </VBox>
+            </VBox>
+        </Tab>
+    </TabPane>
+
+    <!-- Footer -->
+    <HBox spacing="10" alignment="CENTER_RIGHT">
+        <Button fx:id="exportButton" text="Exporter" onAction="#handleExport"/>
+        <Button fx:id="refreshButton" text="Rafraîchir" onAction="#handleRefresh"/>
+        <Button fx:id="closeButton" text="Fermer" onAction="#handleClose"/>
+    </HBox>
+
+    <stylesheets>
+        <URL value="@../css/statistics.css"/>
+    </stylesheets>
+</VBox> 

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.geometry.Insets?>
+
+<AnchorPane xmlns="http://javafx.com/javafx/17"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="controllers.terrains.ListeTerrainFr">
+
+    <!-- Navbar -->
+    <fx:include fx:id="navbar" source="../navbarFront.fxml"
+                AnchorPane.topAnchor="0"
+                AnchorPane.leftAnchor="0"
+                AnchorPane.rightAnchor="0"/>
+
+    <!-- Contenu principal -->
+    <VBox AnchorPane.topAnchor="60"
+          AnchorPane.bottomAnchor="0"
+          AnchorPane.leftAnchor="0"
+          AnchorPane.rightAnchor="0"
+          spacing="20"
+          style="-fx-padding: 20;">
+
+        <!-- Titre -->
+        <HBox alignment="CENTER_LEFT" spacing="20">
+            <Label text="Liste des Terrains"
+                   style="-fx-font-size: 24px; -fx-font-weight: bold;"/>
+        </HBox>
+
+        <!-- Conteneur des cartes -->
+        <ScrollPane fitToWidth="true"
+                    hbarPolicy="NEVER"
+                    style="-fx-background: transparent; -fx-background-color: transparent;">
+            <GridPane fx:id="terrainsGrid"
+                      hgap="20"
+                      vgap="20"
+                      alignment="TOP_CENTER"
+                      style="-fx-background-color: transparent;">
+                <padding>
+                    <Insets top="10" right="20" bottom="20" left="20"/>
+                </padding>
+            </GridPane>
+        </ScrollPane>
+    </VBox>
+</AnchorPane>

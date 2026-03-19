@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.shape.*?>
+
+<VBox xmlns="http://javafx.com/javafx/17" 
+      xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="controllers.marketplace.MarketplaceController"
+      id="marketplace-root"
+      stylesheets="@../../styles/marketplace.css">
+
+    <!-- Header Section with Logo and Title -->
+    <BorderPane id="header">
+        <left>
+            <HBox alignment="CENTER_LEFT" spacing="10">
+                <ImageView fitHeight="32" fitWidth="32" preserveRatio="true">
+                    <image>
+                        <Image url="@../../img/marketplace-icon.png" />
+                    </image>
+                </ImageView>
+                <Label text="Marketplace" id="header-title"/>
+            </HBox>
+        </left>
+        <right>
+            <HBox spacing="10" alignment="CENTER_RIGHT">
+                <Button text="Mes Favoris" onAction="#handleShowFavorites" id="favorites-btn">
+                    <graphic>
+                        <Label text="♥" id="icon-label"/>
+                    </graphic>
+                </Button>
+                <Button text="Mon Compte" id="account-btn" />
+            </HBox>
+        </right>
+    </BorderPane>
+
+    <!-- Main Content Area -->
+    <VBox spacing="20" VBox.vgrow="ALWAYS" id="main-content">
+        <!-- Search and Action Bar -->
+        <BorderPane id="search-bar">
+            <left>
+                <HBox spacing="10" alignment="CENTER_LEFT">
+                    <TextField fx:id="searchField" promptText="Rechercher un produit..." id="search-field">
+                        <padding>
+                            <Insets left="15" />
+                        </padding>
+                    </TextField>
+                    <Button fx:id="filterBtn" text="Filtres" id="filter-btn">
+                        <graphic>
+                            <Label text="⚙" id="icon-label"/>
+                        </graphic>
+                    </Button>
+                </HBox>
+            </left>
+            <right>
+                <HBox spacing="10" alignment="CENTER_RIGHT">
+                    <Button fx:id="refreshBtn" text="Rafraîchir" id="refresh-btn" onAction="#handleRefresh">
+                        <graphic>
+                            <Label text="↻" id="icon-label"/>
+                        </graphic>
+                    </Button>
+                    <Button fx:id="addProductBtn" text="Ajouter un produit" id="add-product-btn" onAction="#handleAddProduct">
+                        <graphic>
+                            <Label text="+" id="icon-label"/>
+                        </graphic>
+                    </Button>
+                </HBox>
+            </right>
+        </BorderPane>
+
+        <!-- Ad Section with Slider -->
+        <StackPane id="ad-section">
+            <VBox alignment="CENTER">
+                <!-- Ad Image Container -->
+                <StackPane fx:id="adImageContainer" id="ad-image-container">
+                    <ImageView fx:id="adImageView" fitWidth="800" fitHeight="200" preserveRatio="true"/>
+                </StackPane>
+                <!-- Ad Controls -->
+                <HBox alignment="CENTER" spacing="10" id="ad-controls">
+                    <Button fx:id="prevAdBtn" text="❮" styleClass="ad-nav-button"/>
+                    <HBox fx:id="adIndicators" spacing="5" alignment="CENTER"/>
+                    <Button fx:id="nextAdBtn" text="❯" styleClass="ad-nav-button"/>
+                </HBox>
+            </VBox>
+        </StackPane>
+
+        <!-- Products Grid -->
+        <ScrollPane fitToWidth="true" VBox.vgrow="ALWAYS" id="products-scroll">
+            <GridPane fx:id="productsGrid" hgap="20" vgap="20" id="products-grid"/>
+        </ScrollPane>
+
+        <!-- Status Bar -->
+        <BorderPane id="status-bar">
+            <left>
+                <Label text="© 2024 WeFarm Marketplace" id="copyright"/>
+            </left>
+            <right>
+                <HBox spacing="15" alignment="CENTER_RIGHT">
+                    <Label text="Connecté en tant que: " id="login-label"/>
+                    <Label fx:id="usernameLabel" id="username"/>
+                </HBox>
+            </right>
+        </BorderPane>
+    </VBox>
+</VBox>

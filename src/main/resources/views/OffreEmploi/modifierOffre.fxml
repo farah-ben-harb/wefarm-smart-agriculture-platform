@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="controllers.OffreEmploi.ModifierOffreEmploiController"
+            stylesheets="@/css/stylesOffresEmploi.css"
+            prefHeight="600.0" prefWidth="800.0">
+    <!-- Navbar positionnée en haut et prenant toute la largeur -->
+    <fx:include fx:id="navbar" source="../navbarFront.fxml" AnchorPane.topAnchor="0" AnchorPane.leftAnchor="20" AnchorPane.rightAnchor="20"/>
+    <!-- Conteneur principal en HBox pour une disposition horizontale -->
+    <HBox spacing="20" alignment="TOP_CENTER"
+          AnchorPane.topAnchor="100" AnchorPane.bottomAnchor="20"
+          AnchorPane.leftAnchor="20" AnchorPane.rightAnchor="20">
+
+        <!-- Formulaire de modification -->
+        <VBox spacing="20" alignment="TOP_LEFT" prefWidth="400">
+            <!-- Titre de la page -->
+            <HBox alignment="CENTER_LEFT" spacing="10">
+                <Region HBox.hgrow="ALWAYS"/> <!-- Pousse le contenu vers la droite -->
+                <Label text="Modifier l'Offre" styleClass="form-title"/>
+            </HBox>
+
+            <GridPane layoutX="20" layoutY="70" hgap="15" vgap="15">
+                <columnConstraints>
+                    <ColumnConstraints prefWidth="150" halignment="RIGHT"/>
+                    <ColumnConstraints prefWidth="250" halignment="LEFT"/>
+                </columnConstraints>
+
+                <!-- Titre -->
+                <Label text="Titre" styleClass="field-label" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+                <TextField fx:id="titreField" styleClass="form-field" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+                <Label fx:id="titreError" textFill="RED" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+
+                <!-- Description -->
+                <Label text="Description" styleClass="field-label" GridPane.rowIndex="2" GridPane.columnIndex="0"/>
+                <TextArea fx:id="descriptionField" styleClass="form-field" prefRowCount="3"
+                          GridPane.rowIndex="2" GridPane.columnIndex="1"/>
+                <Label fx:id="descriptionError" textFill="RED" GridPane.rowIndex="3" GridPane.columnIndex="1"/>
+
+                <!-- Nombre de postes -->
+                <Label text="Nombre de postes" styleClass="field-label" GridPane.rowIndex="4" GridPane.columnIndex="0"/>
+                <TextField fx:id="nombrePostesField" styleClass="form-field" GridPane.rowIndex="4" GridPane.columnIndex="1"/>
+                <Label fx:id="nombrePostesError" textFill="RED" GridPane.rowIndex="5" GridPane.columnIndex="1"/>
+
+                <!-- Localisation -->
+                <Label text="Localisation" styleClass="field-label" GridPane.rowIndex="8" GridPane.columnIndex="0"/>
+                <ComboBox fx:id="localisationComboBox" styleClass="form-field" GridPane.rowIndex="8" GridPane.columnIndex="1"/>
+                <Label fx:id="localisationError" textFill="RED" GridPane.rowIndex="9" GridPane.columnIndex="1"/>
+            </GridPane>
+        </VBox>
+
+        <!-- Section de la droite pour les autres éléments (dates, statut, compétences, salaire) -->
+        <VBox spacing="10" alignment="TOP_LEFT" prefWidth="400">
+            <GridPane layoutX="20" layoutY="70" hgap="15" vgap="15">
+                <!-- Date début et fin estimée -->
+                <Label text="Date début" styleClass="field-label" GridPane.rowIndex="6" GridPane.columnIndex="0"/>
+                <Label fx:id="dateDebutLabel" styleClass="form-field" GridPane.rowIndex="6" GridPane.columnIndex="1"/>
+
+                <Label text="Date fin estimée" styleClass="field-label" GridPane.rowIndex="7" GridPane.columnIndex="0"/>
+                <Label fx:id="dateFinLabel" styleClass="form-field" GridPane.rowIndex="7" GridPane.columnIndex="1"/>
+
+                <!-- Statut -->
+                <Label text="Statut" styleClass="field-label" GridPane.rowIndex="10" GridPane.columnIndex="0"/>
+                <ComboBox fx:id="statutComboBox" styleClass="form-field" GridPane.rowIndex="10" GridPane.columnIndex="1"/>
+
+                <!-- Compétences -->
+                <Label text="Compétences requises" styleClass="field-label" GridPane.rowIndex="12" GridPane.columnIndex="0"/>
+                <TextField fx:id="competencesField" styleClass="form-field" GridPane.rowIndex="12" GridPane.columnIndex="1"/>
+                <Label fx:id="competencesError" textFill="RED" GridPane.rowIndex="13" GridPane.columnIndex="1"/>
+
+                <!-- Salaire -->
+                <Label text="Salaire (TND)" styleClass="field-label" GridPane.rowIndex="14" GridPane.columnIndex="0"/>
+                <TextField fx:id="salaireField" styleClass="form-field" GridPane.rowIndex="14" GridPane.columnIndex="1"/>
+                <Label fx:id="salaireError" textFill="RED" GridPane.rowIndex="15" GridPane.columnIndex="1"/>
+            </GridPane>
+
+            <!-- Boutons -->
+            <HBox spacing="15" alignment="BOTTOM_RIGHT" layoutX="350" layoutY="600">
+                <Button text="Annuler" styleClass="cancel-button" onAction="#annulerModifications"></Button>
+                <Button text="Enregistrer" styleClass="save-button" onAction="#enregistrerModifications"></Button>
+            </HBox>
+        </VBox>
+    </HBox>
+</AnchorPane>

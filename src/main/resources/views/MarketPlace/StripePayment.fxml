@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.web.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.text.Text?>
+
+<VBox spacing="20" style="-fx-background-color: white; -fx-padding: 20;" 
+      xmlns="http://javafx.com/javafx/17"
+      xmlns:fx="http://javafx.com/fxml/1" 
+      fx:controller="controllers.marketplace.StripePaymentController">
+    
+    <!-- Header -->
+    <Label text="Paiement Sécurisé" style="-fx-font-size: 24; -fx-font-weight: bold;"/>
+    
+    <!-- Order Summary Section -->
+    <VBox spacing="10" style="-fx-background-color: #f8f9fa; -fx-padding: 15; -fx-background-radius: 5;">
+        <Label text="Récapitulatif de la commande" style="-fx-font-size: 16; -fx-font-weight: bold;"/>
+        <GridPane vgap="8" hgap="15">
+            <Label text="Produit:" GridPane.rowIndex="0" GridPane.columnIndex="0" 
+                   style="-fx-text-fill: #666;"/>
+            <Label fx:id="productNameLabel" GridPane.rowIndex="0" GridPane.columnIndex="1"
+                   style="-fx-font-weight: bold;"/>
+            
+            <Label text="Quantité:" GridPane.rowIndex="1" GridPane.columnIndex="0"
+                   style="-fx-text-fill: #666;"/>
+            <Label fx:id="quantityLabel" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+            
+            <Label text="Montant total:" GridPane.rowIndex="2" GridPane.columnIndex="0"
+                   style="-fx-text-fill: #666;"/>
+            <Label fx:id="totalAmountLabel" GridPane.rowIndex="2" GridPane.columnIndex="1"
+                   style="-fx-font-weight: bold; -fx-text-fill: #2ecc71;"/>
+        </GridPane>
+    </VBox>
+    
+    <!-- Payment Information Section -->
+    <VBox spacing="10">
+        <Label text="Informations de paiement" style="-fx-font-size: 16; -fx-font-weight: bold;"/>
+        <Text text="Vos données de paiement sont sécurisées par Stripe" 
+              style="-fx-fill: #666;" wrappingWidth="400"/>
+        
+        <!-- Stripe Card Element -->
+        <VBox spacing="5" style="-fx-padding: 10 0;">
+            <Label text="Détails de la carte" style="-fx-font-weight: bold;"/>
+            <WebView fx:id="stripeWebView" prefHeight="150"/>
+        </VBox>
+        
+        <!-- Security Info -->
+        <HBox spacing="10" style="-fx-padding: 10 0;">
+            <Region prefWidth="20"/>
+            <VBox spacing="5">
+                <Label text="🔒 Paiement sécurisé SSL" style="-fx-text-fill: #666;"/>
+                <Label text="💳 Vos données bancaires sont chiffrées" style="-fx-text-fill: #666;"/>
+            </VBox>
+        </HBox>
+    </VBox>
+    
+    <!-- Action Buttons -->
+    <HBox spacing="10" alignment="CENTER_RIGHT">
+        <Button fx:id="cancelButton" text="Annuler" 
+                style="-fx-background-color: #e74c3c; -fx-text-fill: white;"
+                onAction="#handleCancel"/>
+        <Button fx:id="payButton" text="Payer maintenant" 
+                style="-fx-background-color: #2ecc71; -fx-text-fill: white; -fx-font-weight: bold; -fx-padding: 10 20;"
+                onAction="#handlePayment"/>
+    </HBox>
+</VBox> 

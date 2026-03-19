@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.effect.DropShadow?>
+
+<AnchorPane xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.User.EditUserController">
+    <VBox alignment="CENTER" spacing="20" prefWidth="500" prefHeight="600" style="-fx-padding: 25px; -fx-background-color: #f5f9f3;">
+        <!-- Titre amélioré -->
+        <Label text="Modifier Utilisateur" style="-fx-font-weight: bold; -fx-font-size: 20px; -fx-text-fill: #2d3e2d; -fx-padding: 0 0 10 0;">
+            <font>
+                <Font name="Segoe UI" size="18"/>
+            </font>
+        </Label>
+
+        <!-- Photo de profil avec cadre circulaire -->
+        <StackPane>
+            <Circle radius="65" fill="#e8f5e9" stroke="#81c784" strokeWidth="2"/>
+            <ImageView fx:id="userImageView" fitWidth="120" fitHeight="120" preserveRatio="true">
+                <effect>
+                    <DropShadow radius="5" color="rgba(0,0,0,0.15)" offsetX="2" offsetY="2"/>
+                </effect>
+            </ImageView>
+        </StackPane>
+
+        <!-- Formulaire avec style épuré -->
+        <GridPane hgap="15" vgap="10" style="-fx-background-color: white; -fx-padding: 25px; -fx-background-radius: 10px; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.1), 10, 0, 0, 3);">
+            <columnConstraints>
+                <ColumnConstraints halignment="RIGHT" minWidth="110" prefWidth="120"/>
+                <ColumnConstraints halignment="LEFT" minWidth="220" prefWidth="250" hgrow="ALWAYS"/>
+            </columnConstraints>
+
+            <!-- Ligne 0: Email -->
+            <Label text="Email:" GridPane.columnIndex="0" GridPane.rowIndex="0" style="-fx-font-weight: bold; -fx-text-fill: #5d6d5d;"/>
+            <VBox GridPane.columnIndex="1" GridPane.rowIndex="0" spacing="2">
+                <TextField fx:id="emailField" style="-fx-pref-width: 250px; -fx-background-radius: 5px; -fx-border-color: #c8e6c9; -fx-border-radius: 5px; -fx-padding: 8px;"/>
+                <Label fx:id="emailError" style="-fx-text-fill: #e53935; -fx-font-size: 12px;"/>
+            </VBox>
+
+            <!-- Ligne 1: Prénom -->
+            <Label text="Prénom:" GridPane.columnIndex="0" GridPane.rowIndex="1" style="-fx-font-weight: bold; -fx-text-fill: #5d6d5d;"/>
+            <VBox GridPane.columnIndex="1" GridPane.rowIndex="1" spacing="2">
+                <TextField fx:id="firstNameField" style="-fx-pref-width: 250px; -fx-background-radius: 5px; -fx-border-color: #c8e6c9; -fx-border-radius: 5px; -fx-padding: 8px;"/>
+                <Label fx:id="firstNameError" style="-fx-text-fill: #e53935; -fx-font-size: 12px;"/>
+            </VBox>
+
+            <!-- Ligne 2: Nom -->
+            <Label text="Nom:" GridPane.columnIndex="0" GridPane.rowIndex="2" style="-fx-font-weight: bold; -fx-text-fill: #5d6d5d;"/>
+            <VBox GridPane.columnIndex="1" GridPane.rowIndex="2" spacing="2">
+                <TextField fx:id="lastNameField" style="-fx-pref-width: 250px; -fx-background-radius: 5px; -fx-border-color: #c8e6c9; -fx-border-radius: 5px; -fx-padding: 8px;"/>
+                <Label fx:id="lastNameError" style="-fx-text-fill: #e53935; -fx-font-size: 12px;"/>
+            </VBox>
+
+            <!-- Ligne 3: Adresse -->
+            <Label text="Adresse:" GridPane.columnIndex="0" GridPane.rowIndex="3" style="-fx-font-weight: bold; -fx-text-fill: #5d6d5d;"/>
+            <VBox GridPane.columnIndex="1" GridPane.rowIndex="3" spacing="2">
+                <TextField fx:id="adresseField" style="-fx-pref-width: 250px; -fx-background-radius: 5px; -fx-border-color: #c8e6c9; -fx-border-radius: 5px; -fx-padding: 8px;"/>
+                <Label fx:id="adresseError" style="-fx-text-fill: #e53935; -fx-font-size: 12px;"/>
+            </VBox>
+
+            <!-- Ligne 4: Téléphone -->
+            <Label text="Téléphone:" GridPane.columnIndex="0" GridPane.rowIndex="4" style="-fx-font-weight: bold; -fx-text-fill: #5d6d5d;"/>
+            <VBox GridPane.columnIndex="1" GridPane.rowIndex="4" spacing="2">
+                <TextField fx:id="numTelField" style="-fx-pref-width: 250px; -fx-background-radius: 5px; -fx-border-color: #c8e6c9; -fx-border-radius: 5px; -fx-padding: 8px;"/>
+                <Label fx:id="numTelError" style="-fx-text-fill: #e53935; -fx-font-size: 12px;"/>
+            </VBox>
+        </GridPane>
+
+        <!-- Boutons avec style amélioré -->
+        <HBox spacing="20" alignment="CENTER" style="-fx-padding: 15px 0 0 0;">
+            <Button text="Enregistrer" fx:id="saveButton" onAction="#handleSave"
+                    style="-fx-background-color: #4CAF50; -fx-text-fill: white; -fx-font-weight: bold; -fx-padding: 8px 30px; -fx-background-radius: 5px; -fx-cursor: hand;">
+                <effect>
+                    <DropShadow radius="3" color="rgba(0,0,0,0.2)" offsetX="1" offsetY="1"/>
+                </effect>
+            </Button>
+            <Button text="Annuler" fx:id="cancelButton" onAction="#handleCancel"
+                    style="-fx-background-color: #95a5a6; -fx-text-fill: white; -fx-font-weight: bold; -fx-padding: 8px 30px; -fx-background-radius: 5px; -fx-cursor: hand;">
+                <effect>
+                    <DropShadow radius="3" color="rgba(0,0,0,0.2)" offsetX="1" offsetY="1"/>
+                </effect>
+            </Button>
+        </HBox>
+    </VBox>
+</AnchorPane>

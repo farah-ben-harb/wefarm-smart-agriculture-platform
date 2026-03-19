@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Text?>
+
+<VBox spacing="20" style="-fx-background-color: #f4f4f4;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.marketplace.FavoritesController">
+    <padding>
+        <Insets top="30" right="40" bottom="30" left="40"/>
+    </padding>
+
+    <!-- Header -->
+    <HBox alignment="CENTER_LEFT" spacing="20">
+        <Label text="Mes Favoris" style="-fx-font-size: 24; -fx-font-weight: bold;"/>
+        <Region HBox.hgrow="ALWAYS"/>
+        <Button fx:id="backBtn" text="Retour" onAction="#handleBack"/>
+    </HBox>
+
+    <!-- Products Grid -->
+    <ScrollPane fitToWidth="true" VBox.vgrow="ALWAYS">
+        <GridPane fx:id="favoritesGrid" hgap="20" vgap="20">
+            <!-- Products will be added here dynamically -->
+        </GridPane>
+    </ScrollPane>
+
+    <!-- Empty State Message -->
+    <VBox fx:id="emptyState" alignment="CENTER" spacing="10" visible="false">
+        <Text text="Aucun produit dans vos favoris" style="-fx-font-size: 18;"/>
+        <Button text="Parcourir les produits" onAction="#handleBrowseProducts"/>
+    </VBox>
+</VBox> 

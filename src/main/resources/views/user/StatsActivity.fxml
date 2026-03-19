@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.chart.BarChart?>
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.NumberAxis?>
+
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.control.Label?>
+<VBox xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="controllers.User.StatsActivityController"
+      spacing="20"
+      alignment="CENTER"
+      style="-fx-background-color: #f9f9f9;"
+      prefHeight="500.0"
+      prefWidth="700.0">
+
+    <!-- Titre -->
+    <HBox alignment="CENTER">
+        <Label text="Statistiques des Activités"
+               style="-fx-font-size: 22px; -fx-font-weight: bold; -fx-text-fill: #000000;" />
+    </HBox>
+
+    <!-- Bar Chart -->
+    <BarChart fx:id="barChart"
+              title=""
+              prefWidth="650"
+              prefHeight="420"
+              legendVisible="false">
+        <xAxis>
+            <CategoryAxis fx:id="xAxis" label="Type d'Action"/>
+        </xAxis>
+        <yAxis>
+            <NumberAxis fx:id="yAxis" label="Nombre d'Activités"/>
+        </yAxis>
+    </BarChart>
+
+</VBox>

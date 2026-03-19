@@ -1,0 +1,51 @@
+/* Style pour la liste des conversations */
+.conversation-list .list-cell {
+    -fx-background-color: #ffffff;
+    -fx-padding: 10;
+    -fx-border-color: #e0e0e0;
+    -fx-border-width: 0 0 1 0;
+}
+
+.conversation-list .list-cell:hover {
+    -fx-background-color: #f0f2f5;
+}
+
+.conversation-list .list-cell:selected {
+    -fx-background-color: #e4e6eb;
+}
+
+/* Style pour les messages envoyés (à droite) */
+.message-sent {
+    -fx-background-color: #007ACC;
+    -fx-background-radius: 15;
+    -fx-padding: 10;
+    -fx-text-fill: white;
+    -fx-alignment: center-right;
+    -fx-max-width: 400;
+}
+
+/* Style pour les messages reçus (à gauche) */
+.message-received {
+    -fx-background-color: #e4e6eb;
+    -fx-background-radius: 15;
+    -fx-padding: 10;
+    -fx-text-fill: black;
+    -fx-alignment: center-left;
+    -fx-max-width: 400;
+}
+
+/* Style pour le conteneur de messages */
+#messagesContainer .label {
+    -fx-wrap-text: true;
+}
+
+/* Style pour le bouton Supprimer dans la liste des conversations */
+.delete-button {
+    -fx-background-color: #ff4d4f;
+    -fx-text-fill: white;
+    -fx-font-size: 12px;
+    -fx-padding: 2 6;
+}
+.delete-button:hover {
+    -fx-background-color: #d9363e;
+}

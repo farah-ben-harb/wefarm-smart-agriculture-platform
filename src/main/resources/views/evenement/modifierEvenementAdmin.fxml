@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.text.Font?>
+
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<BorderPane xmlns:fx="http://javafx.com/fxml" fx:controller="controllers.Event.ModifierEvenementController" prefWidth="800" prefHeight="600">
+    <left>
+        <fx:include source="../navbarBack.fxml" />
+    </left>
+
+    <center>
+        <VBox spacing="20" alignment="TOP_CENTER" style="-fx-padding: 20;">
+            <!-- Barre supérieure -->
+            <HBox spacing="10" alignment="TOP_CENTER" style="-fx-background-color: #ffffff; -fx-padding: 10 20 20 20; -fx-border-color: #ddd; -fx-border-width: 0 0 1 0;">
+                <!-- Groupe recherche + bouton aligné à gauche -->
+                <HBox spacing="5" alignment="CENTER_LEFT">
+                    <!-- Champ de recherche avec style transparent -->
+                    <TextField  promptText="Rechercher..."
+                                style="
+                             -fx-pref-width: 400px;
+                             -fx-background-radius: 20;
+                             -fx-border-radius: 20;
+                             -fx-padding: 8 15;
+                             -fx-background-color: rgba(0,0,0,0.05);
+                             -fx-prompt-text-fill: #a0a0a0;
+                         "/>
+
+                    <!-- Bouton recherche vert -->
+                    <Button text="🔍"
+                            style="
+                           -fx-background-radius: 20;
+                           -fx-padding: 8 15;
+                           -fx-min-width: 40px;
+                           -fx-background-color: #1cc88a;
+                           -fx-text-fill: white;
+                           -fx-font-weight: bold;
+                       "/>
+                </HBox>
+
+                <!-- Espace étirable pour repousser les autres éléments à droite -->
+                <Region HBox.hgrow="ALWAYS" />
+
+                <!-- Bouton notification style discret -->
+                <Button  text="🔔"
+                         style="
+                               -fx-padding: 15 20;
+                                -fx-min-width: 60px;
+                                -fx-min-height: 60px;
+                                -fx-background-color: transparent;
+                                -fx-text-fill: #d1d3e2;
+                                -fx-font-size: 18px;
+                                -fx-cursor: hand;
+                           "/>
+
+                <!-- Bouton message style discret -->
+                <Button text="📩"
+                        style="
+                                -fx-padding: 15 20;
+                                -fx-min-width: 60px;
+                                -fx-min-height: 60px;
+                                -fx-background-color: transparent;
+                                -fx-text-fill: #d1d3e2;
+                                -fx-font-size: 24px;
+                                -fx-cursor: hand;
+                            "/>
+
+                <!-- Séparateur avant le menu admin -->
+                <Separator orientation="VERTICAL" style="-fx-padding: 0 10px;" />
+
+                <!-- Menu admin avec texte gris -->
+                <MenuButton style="-fx-background-color: transparent;" HBox.hgrow="NEVER">
+                    <graphic>
+                        <HBox spacing="5" alignment="CENTER">
+                            <Label text="Admin" style="-fx-text-fill: #858796; -fx-font-size: 14px;" />
+                            <ImageView fitHeight="28" fitWidth="28">
+                                <Image url="@/img/admin.png"/>
+                            </ImageView>
+                        </HBox>
+                    </graphic>
+                    <items>
+                        <MenuItem text="Profil" />
+                        <MenuItem text="Paramètres" />
+                        <MenuItem text="Activité" />
+                        <SeparatorMenuItem />
+                        <MenuItem text="Déconnexion" />
+                    </items>
+                </MenuButton>
+            </HBox>
+
+            <!-- Titre principal centré -->
+            <Label text="Modifier un Événement"
+                   style="
+                       -fx-font-size: 28px;
+                       -fx-font-weight: bold;
+                       -fx-text-fill: #1b1a1a;
+                       -fx-padding: 0 0 20 0;
+                   "
+                   VBox.vgrow="NEVER"/>
+
+            <!-- Formulaire centré avec espacement amélioré -->
+            <GridPane hgap="15" vgap="15" alignment="CENTER" style="-fx-padding: 0 50;">
+                <columnConstraints>
+                    <ColumnConstraints minWidth="150" halignment="RIGHT"/>
+                    <ColumnConstraints minWidth="300" halignment="LEFT"/>
+                    <ColumnConstraints minWidth="200" halignment="LEFT"/>
+                </columnConstraints>
+
+                <!-- Titre -->
+                <Label text="Titre :"
+                       style="-fx-font-size: 16px; -fx-font-weight: bold;"
+                       GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+                <TextField fx:id="titreField"
+                           style="-fx-font-size: 14px; -fx-pref-height: 35;"
+                           GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+                <Label fx:id="titreError" textFill="red"
+                       style="-fx-font-size: 14px;"
+                       GridPane.rowIndex="0" GridPane.columnIndex="2"/>
+
+                <!-- Description -->
+                <Label text="Description :"
+                       style="-fx-font-size: 16px; -fx-font-weight: bold;"
+                       GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+                <TextArea fx:id="descriptionField"
+                          style="-fx-font-size: 14px;"
+                          prefRowCount="3"
+                          GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+                <Label fx:id="descriptionError" textFill="red"
+                       style="-fx-font-size: 14px;"
+                       GridPane.rowIndex="1" GridPane.columnIndex="2"/>
+
+                <!-- Date début -->
+                <Label text="Date début :"
+                       style="-fx-font-size: 16px; -fx-font-weight: bold;"
+                       GridPane.rowIndex="2" GridPane.columnIndex="0"/>
+                <DatePicker fx:id="dateDebutPicker"
+                            style="-fx-font-size: 14px; -fx-pref-height: 35;"
+                            GridPane.rowIndex="2" GridPane.columnIndex="1"/>
+                <Label fx:id="dateDebutError" textFill="red"
+                       style="-fx-font-size: 14px;"
+                       GridPane.rowIndex="2" GridPane.columnIndex="2"/>
+
+                <!-- Type de visite -->
+                <Label text="Type de visite :"
+                       style="-fx-font-size: 16px; -fx-font-weight: bold;"
+                       GridPane.rowIndex="3" GridPane.columnIndex="0"/>
+                <ComboBox fx:id="typeVisiteComboBox"
+                          style="-fx-font-size: 14px; -fx-pref-height: 35;"
+                          GridPane.rowIndex="3" GridPane.columnIndex="1"/>
+                <Label fx:id="typeVisiteError" textFill="red"
+                       style="-fx-font-size: 14px;"
+                       GridPane.rowIndex="3" GridPane.columnIndex="2"/>
+
+                <!-- Localisation -->
+                <Label text="Localisation :"
+                       style="-fx-font-size: 16px; -fx-font-weight: bold;"
+                       GridPane.rowIndex="4" GridPane.columnIndex="0"/>
+                <TextField fx:id="localisationField"
+                           style="-fx-font-size: 14px; -fx-pref-height: 35;"
+                           GridPane.rowIndex="4" GridPane.columnIndex="1"/>
+                <Label fx:id="localisationError" textFill="red"
+                       style="-fx-font-size: 14px;"
+                       GridPane.rowIndex="4" GridPane.columnIndex="2"/>
+
+                <!-- Prix -->
+                <Label text="Prix :"
+                       style="-fx-font-size: 16px; -fx-font-weight: bold;"
+                       GridPane.rowIndex="5" GridPane.columnIndex="0"/>
+                <TextField fx:id="prixField"
+                           style="-fx-font-size: 14px; -fx-pref-height: 35;"
+                           GridPane.rowIndex="5" GridPane.columnIndex="1"/>
+                <Label fx:id="prixError" textFill="red"
+                       style="-fx-font-size: 14px;"
+                       GridPane.rowIndex="5" GridPane.columnIndex="2"/>
+            </GridPane>
+
+            <!-- Boutons centrés avec espacement -->
+            <HBox spacing="25" alignment="CENTER" style="-fx-padding: 30 0 0 0;">
+                <Button text="Annuler"
+                        onAction="#annulerModifications"
+                        style="
+                            -fx-font-size: 16px;
+                            -fx-pref-width: 120px;
+                            -fx-pref-height: 40px;
+                            -fx-background-color: #e74a3b;
+                            -fx-text-fill: white;
+                        "/>
+                <Button text="Enregistrer"
+                        onAction="#enregistrerModifications"
+                        style="
+                            -fx-font-size: 16px;
+                            -fx-pref-width: 120px;
+                            -fx-pref-height: 40px;
+                            -fx-background-color: #158d54;
+                            -fx-text-fill: white;
+                        "/>
+            </HBox>
+        </VBox>
+    </center>
+</BorderPane>
